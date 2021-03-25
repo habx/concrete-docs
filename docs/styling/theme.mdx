@@ -1,5 +1,5 @@
 ---
-title: Theme
+title: Styled component theme
 ---
 
 import styled from 'styled-components'
@@ -214,3 +214,24 @@ export const FontFamily = styled.span`
 `
 ```
 
+
+## Access theme via hook
+
+Sometime you will need to access theme properties in the js scope. You can get that from the hook `useThemeVariant`
+
+```jsx
+  import { Background, useThemeVariant } from '@habx/ui-core'
+
+  const MyComponent = () => {
+    const theme = useThemeVariant()
+
+    return <Background backgroundColor={theme.neutralColor.withIntensityFading[200]}>
+      ...
+    </ProjectsStatusDashboardContainer>
+  }
+```
+
+
+## Dark Mode
+
+// TODO

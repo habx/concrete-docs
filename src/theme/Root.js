@@ -22,6 +22,9 @@ const GlobalStyle = createGlobalStyle`
       variation: 'calmer',
     })};
     --ifm-code-font-size: 95%;
+    --ifm-footer-background-color: ${theme.color('secondary')};
+    --ifm-footer-color: ${theme.neutralColor('100')};
+    --ifm-footer-link-color: ${theme.neutralColor('100')};
   }
 
   .docusaurus-highlight-code-line {

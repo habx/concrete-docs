@@ -5,21 +5,30 @@ import Layout from '@theme/Layout'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { Background, Button, Title } from '@habx/ui-core'
+import { Background, breakpoints, Button, Title } from '@habx/ui-core'
 
 export const HomeImg = styled.img`
   position: absolute;
   z-index: -1;
-  width: 100%;
+  min-width: 100%;
+  height: 600px;
+  object-fit: cover;
 `
 
 export const HomeMainContainer = styled(Background).attrs(() => ({
   backgroundColor: 'black',
 }))`
+  background: transparent !important;
+`
+
+export const HomeHeadlineContainer = styled.div`
+  padding: 128px;
   display: grid;
   grid-gap: 32px;
-  margin: 128px;
-  background: transparent !important;
+
+  @media (${breakpoints.below.tablet}) {
+    padding: 32px;
+  }
 `
 
 export default function Home() {
@@ -32,12 +41,14 @@ export default function Home() {
       title={`${siteConfig.title} documentation`}
       description="Design System By habx>"
     >
-      <HomeImg src={imgUrl} alt="cover" />
       <HomeMainContainer>
-        <Title type="headerBig">Making design concrete.</Title>
-        <Link to={useBaseUrl('docs/')}>
-          <Button secondary>Get Started</Button>
-        </Link>
+        <HomeImg src={imgUrl} alt="cover" />
+        <HomeHeadlineContainer>
+          <Title type="headerBig">Making design concrete.</Title>
+          <Link to={useBaseUrl('docs/')}>
+            <Button secondary>Get Started</Button>
+          </Link>
+        </HomeHeadlineContainer>
       </HomeMainContainer>
     </Layout>
   )

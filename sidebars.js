@@ -1,6 +1,22 @@
 module.exports = {
   docs: [
     'getting-started',
+    'layouts',
+    'typo',
+    'modal-like',
+    'async-prompts',
+    'utils',
+    'hooks',
+    {
+      type: 'category',
+      label: 'Styling',
+      items: [
+        'styling/theme',
+        'styling/animations',
+        'styling/breakpoints',
+        'styling/custom-theme',
+      ],
+    },
     {
       type: 'category',
       label: 'Components',
@@ -21,17 +37,6 @@ module.exports = {
           ],
         },
       ],
-    },
-    'modal-like',
-    {
-      type: 'category',
-      label: 'Usage with styled components',
-      items: ['styled-components/theme'],
-    },
-    {
-      type: 'category',
-      label: 'Helpers',
-      items: ['utils/async-prompts', 'utils/notify'],
     },
     {
       type: 'category',
