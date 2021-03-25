@@ -30,15 +30,13 @@ const MyComponent = () => {
 
 ```
 
-import { confirm, notify, Button, Provider } from '@habx/ui-core'
+import { confirm, notify, Button } from '@habx/ui-core'
 export const BasicConfirmUsage = () => {
   const handleSubmit = async () => {
     const hasConfirmed = await confirm({ message: 'Do you want to confirm ?', confirmLabel: 'Yes', cancelLabel: 'No' })
     notify(`User response is ${hasConfirmed ? 'yes' : 'no'}`)
   }
-  return<Provider>
-    <Button onClick={handleSubmit}>Click Me!</Button>
-  </Provider>
+  return <Button onClick={handleSubmit}>Click Me!</Button>
 }
 
 <BasicConfirmUsage />
