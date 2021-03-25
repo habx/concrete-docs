@@ -1,11 +1,11 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   title: 'Concrete',
   tagline: 'Concrete design-system documentation',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://habx.github.io/concrete-docs',
+  baseUrl: '/concrete-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -91,4 +91,4 @@ module.exports = {
     ],
   ],
   plugins: [path.resolve(__dirname, './plugins/figma')],
-};
+}

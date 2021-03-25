@@ -1,3 +1,63 @@
 ---
 title: Theme
 ---
+
+## Overview
+
+**Concrete** uses [styled-components](https://styled-components.com/) for its own styling, so it is already well integrated.
+Theme object is accessible directly in any styled component rendered under `Provider`.
+Colors should always be based on *theme* in order to have a consistent darkmode.
+
+## Colors
+
+You can access a set of colors defined in the _theme_. They are
+* `primary`
+* `secondary`
+* `warning`
+* `error`
+* `success`
+* `background`
+
+#### Example usage
+
+```jsx
+
+import styled from 'styled-components'
+import { theme } from '@habx/ui-core'
+
+export const SpanWithPrimaryColor = styled.span`
+  color: ${theme.color('primary')}
+`
+
+```
+
+import styled from 'styled-components'
+import { theme } from '@habx/ui-core'
+
+export const SpanWithPrimaryColor = styled.span`
+  color: ${theme.color('primary')}
+`
+
+<SpanWithPrimaryColor>I'm primary color !</SpanWithPrimaryColor>
+
+### Neutral color
+
+
+### Text color
+
+Same case for text color. A color with variation is defined in theme and you can apply this color in your styled-components.
+
+#### Example
+
+```jsx
+import styled from 'styled-components'
+import { theme } from '@habx/ui-core'
+
+export const SpanWithTextColor = styled.span`
+  color: ${theme.textColor()}
+`
+```
+
+### Color variations
+
+
