@@ -9,8 +9,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'habx', // Usually your GitHub org/user name.
-  projectName: 'concrete-docs', // Usually your repo name.
+  organizationName: 'habx',
+  projectName: 'concrete-docs',
   themeConfig: {
     navbar: {
       title: 'Concrete',
@@ -26,7 +26,7 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/habx/ui-core',
           label: 'GitHub',
           position: 'right',
         },
@@ -45,33 +45,20 @@ module.exports = {
           ],
         },
         {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
           title: 'More',
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/habx/ui-core',
+            },
+            {
+              label: 'Table',
+              href: 'https://github.com/habx/ui-table',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Concrete, Inc. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -80,9 +67,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/habx/concrete-docs/edit/dev/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
