@@ -53,14 +53,17 @@ Main colors comes with 6 variations useful when you want contrast in your compon
 
 export const DivWithPrimaryCalmColor = styled.div`
   color: ${({ variation, ...props }) => theme.color('primary', { variation })(props)};
+  padding: 8px 24px;
 `
 
-<DivWithPrimaryCalmColor variation='calmer'>I'm calmer primary color !</DivWithPrimaryCalmColor>
-<DivWithPrimaryCalmColor variation='calm'>I'm calm primary color !</DivWithPrimaryCalmColor>
-<DivWithPrimaryCalmColor variation='base'>I'm base primary color !</DivWithPrimaryCalmColor>
-<DivWithPrimaryCalmColor variation='loud'>I'm loud primary color !</DivWithPrimaryCalmColor>
-<DivWithPrimaryCalmColor variation='louder'>I'm louder primary color !</DivWithPrimaryCalmColor>
-<DivWithPrimaryCalmColor variation='contrastText'>I'm contrastText primary color !</DivWithPrimaryCalmColor>
+<Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
+  <DivWithPrimaryCalmColor variation='calmer'>I'm calmer primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation='calm'>I'm calm primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation='base'>I'm base primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation='loud'>I'm loud primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation='louder'>I'm louder primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation='contrastText'>I'm contrastText primary color !</DivWithPrimaryCalmColor>
+</Background>
 
 #### Example
 
@@ -90,7 +93,9 @@ export const NeutralColorExample = () =>
     )}
   </div>
 
-<NeutralColorExample />
+<Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
+  <NeutralColorExample />
+</Background>
 
 ##### In dark mode
 
