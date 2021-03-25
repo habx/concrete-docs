@@ -1,0 +1,17 @@
+---
+title: Breakpoints
+---
+
+import { usePluginData } from '@docusaurus/useGlobalData';
+
+export const Figma = () => {
+  const figma = usePluginData('figma')
+  const figmaData = JSON.parse(figma)
+  return (
+    <img src={figmaData.breakpoints} alt="breakpoints"/>
+  )
+};
+
+<Figma />
+
+[see figma](https://www.figma.com/file/9tNXeY1XbVmfHEVCYYtoal/03---%F0%9F%8E%A8-Branding-guidelines)

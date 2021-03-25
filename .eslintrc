@@ -1,0 +1,3 @@
+{
+  "extends": ["@habx/client/typescript", "@tsconfig/docusaurus/tsconfig.json"]
+}

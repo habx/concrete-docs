@@ -1,0 +1,7 @@
+{
+  "extends": "@habx/config-ci-front/typescript/client.json",
+  "compilerOptions": {},
+  "include": [
+    "src"
+  ]
+}

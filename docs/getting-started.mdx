@@ -1,0 +1,51 @@
+---
+title: Getting Started
+slug: /
+---
+
+## Installation
+
+
+```shell
+npm i @habx/ui-core
+```
+
+## Basic usage
+
+To make **Concrete** work properly, you need to add providers at the top level of your application.
+
+```jsx
+import { Provider as DesignSystemProvider, ThemeProvider } from '@habx/ui-core'
+
+const Providers = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <DesignSystemProvider>
+        {children}
+      </DesignSystemProvider>
+    </ThemeProvider>
+  )
+}
+```
+
+You can now use safely **Concrete**
+
+
+```typescript jsx
+import { Button } from '@habx/ui-core'
+
+const App = ({ children }) => {
+  return (
+    <Providers>
+      <Button>Click Me !</Button>
+    </Providers>
+  )
+}
+```
+
+import { Button, notify, Provider } from '@habx/ui-core';
+
+<Provider>
+  <Button onClick={() => notify("I can be display only with provider")}>Click Me!</Button>
+</Provider>
+
