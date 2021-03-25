@@ -1,5 +1,5 @@
 {
-  "extends": "@habx/config-ci-front/typescript/client.json",
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {},
   "include": [
     "src"
