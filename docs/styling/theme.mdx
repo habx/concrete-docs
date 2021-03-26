@@ -1,6 +1,12 @@
 ---
-title: Styled component theme
+title: Theme
 ---
+
+import {DocuBackground} from '../../src/components/DocuBackground'
+
+
+
+
 
 import styled from 'styled-components'
 import { theme, Background, palette, Text } from '@habx/ui-core'
@@ -56,14 +62,14 @@ export const DivWithPrimaryCalmColor = styled.div`
   padding: 8px 24px;
 `
 
-<Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
+<DocuBackground backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <DivWithPrimaryCalmColor variation='calmer'>I'm calmer primary color !</DivWithPrimaryCalmColor>
   <DivWithPrimaryCalmColor variation='calm'>I'm calm primary color !</DivWithPrimaryCalmColor>
   <DivWithPrimaryCalmColor variation='base'>I'm base primary color !</DivWithPrimaryCalmColor>
   <DivWithPrimaryCalmColor variation='loud'>I'm loud primary color !</DivWithPrimaryCalmColor>
   <DivWithPrimaryCalmColor variation='louder'>I'm louder primary color !</DivWithPrimaryCalmColor>
   <DivWithPrimaryCalmColor variation='contrastText'>I'm contrastText primary color !</DivWithPrimaryCalmColor>
-</Background>
+</DocuBackground>
 
 #### Example
 
