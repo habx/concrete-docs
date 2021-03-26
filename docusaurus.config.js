@@ -38,6 +38,11 @@ module.exports = {
           position: 'left',
         },
         {
+          label: 'Dribble',
+          href: 'https://dribbble.com/habx',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/habx/ui-core',
           label: 'GitHub',
           position: 'right',
@@ -63,8 +68,8 @@ module.exports = {
               href: 'https://github.com/habx/ui-core',
             },
             {
-              label: 'Table',
-              href: 'https://github.com/habx/ui-table',
+              label: 'Dribble',
+              href: 'https://dribbble.com/habx',
             },
           ],
         },
