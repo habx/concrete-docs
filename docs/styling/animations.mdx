@@ -2,6 +2,109 @@
 title: Animations
 ---
 
-TODO
+import styled from 'styled-components'
+import {ActionBar, animations, Background, Button, Card, palette, theme} from '@habx/ui-core'
+
+## Built in animations
+
+You can use some of our built-in animations listed here
+
+* `emerge`
+* `emergeSlantFromTop`
+* `emergeSlantFromBottom`
+* `dive`
+* `diveSlant`
+
+### Example
+```jsx
+
+import { animations } from '@habx/ui-core'
+
+const MyComponent = styled.div`
+  animation: ${animations('emergeSlantFromTop')};
+`
+
+```
+
+export const AnimationContainer = styled(Background)`
+  padding: 64px;
+`
+
+export const StyledAnimationExample = styled(Card)`
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  background: white !important;
+  &[data-animation="emerge"] {
+    animation: ${animations('emerge')}
+  }
+  &[data-animation="emergeSlantFromTop"] {
+    animation: ${animations('emergeSlantFromTop', { duration: 'l' })}
+  }
+  &[data-animation="emergeSlantFromBottom"] {
+    animation: ${animations('emergeSlantFromBottom', { duration: 'l' })}
+  }
+  &[data-animation="dive"] {
+    animation: ${animations('dive', { duration: 'l' })}
+  }
+   &[data-animation="diveSlant"] {
+    animation: ${animations('diveSlant', { duration: 'l' })}
+  }
+`
+
+export const AnimationExample = () => {
+  const [animation, setAnimation] = React.useState(null)
+  const animations = ['emerge', 'emergeSlantFromTop', 'emergeSlantFromBottom', 'dive', 'diveSlant']
+  const handleSetAnimation = (key) => {
+    setAnimation(key)
+    setTimeout(() => setAnimation(currentKey => key === currentKey ? null : currentKey), 1000)
+  }
+  return <div>
+    <StyledAnimationExample data-animation={animation} />
+    <ActionBar>
+      {animations.map(animationKey => (
+        <Button outline disabled={animationKey === animation} key={animationKey} small onClick={() => handleSetAnimation(animationKey)}>
+          {animationKey}
+        </Button>
+      ))}
+    </ActionBar>
+  </div>
+}
+
+<AnimationContainer backgroundColor={palette.neutralWhiteWithIntensityFading[500]}>
+  <AnimationExample />
+</AnimationContainer>
+
+## Transition
+**Concrete** comes with small utility to help having consistent animation duration and type.
+
+```jsx
+
+import { transition } from '@habx/ui-core'
+
+const MyComponent = styled.div`
+  transition: ${transition($cssKey)}
+`
+
+```
+
+## Durations
+
+You can customize tue duration with the following keys:
+*  `xs`
+* `s`
+* `m`
+* `l`
+
+```jsx
+
+import { transition, animations } from '@habx/ui-core'
+
+const MyComponent = styled.div`
+  transition: ${transition('all', { duration: 'xs' })}
+  animation: ${animations('diveSlant', { duration: 'l' })}
+`
+
+```
 
 
