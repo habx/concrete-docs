@@ -19,6 +19,7 @@ export const HomeMainContainer = styled(Background).attrs(() => ({
   backgroundColor: 'black',
 }))`
   background: transparent !important;
+  height: 600px;
 `
 
 export const HomeHeadlineContainer = styled.div`
@@ -30,6 +31,62 @@ export const HomeHeadlineContainer = styled.div`
     padding: 32px;
   }
 `
+
+export const Features = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  grid-gap: 64px;
+  max-width: 1200px;
+  margin: 64px auto;
+  @media (${breakpoints.below.tablet}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
+
+export const FeatureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+`
+
+type FeatureProps = {
+  label: string
+  illustration: string
+}
+
+const features: FeatureProps[] = [
+  {
+    label: 'All the components you need',
+    illustration: 'crank.svg',
+  },
+  {
+    label: 'Shape as you want️',
+    illustration: 'shapes-merging.svg',
+  },
+  {
+    label: 'Made with React️',
+    illustration: 'heart.svg',
+  },
+]
+
+export const Feature: React.FunctionComponent<FeatureProps> = ({
+  label,
+  illustration,
+}) => {
+  const imgUrl = useBaseUrl(`img/illustrations/${illustration}`)
+  return (
+    <FeatureContainer>
+      <img src={imgUrl} alt="" />
+      <Title type="section">{label}</Title>
+    </FeatureContainer>
+  )
+}
 
 export default () => {
   const context = useDocusaurusContext()
@@ -50,6 +107,11 @@ export default () => {
           </Link>
         </HomeHeadlineContainer>
       </HomeMainContainer>
+      <Features>
+        {features.map((feature, index) => (
+          <Feature key={index} {...feature} />
+        ))}
+      </Features>
     </Layout>
   )
 }
