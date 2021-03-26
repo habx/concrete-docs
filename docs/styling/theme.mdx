@@ -94,7 +94,7 @@ It will adapt its color if background is dark or light.
 export const NeutralColorExample = () =>
   <div>
     {new Array(11).fill(0).map((_, index) =>
-      <DivWithNeutralColor strength={`${index * 100}`}>I'm a neutral color with
+      <DivWithNeutralColor key={index} strength={`${index * 100}`}>I'm a neutral color with
         strength {index * 100}</DivWithNeutralColor>
     )}
   </div>
