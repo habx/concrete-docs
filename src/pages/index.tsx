@@ -31,7 +31,7 @@ export const HomeHeadlineContainer = styled.div`
   }
 `
 
-export default function Home() {
+export default () => {
   const context = useDocusaurusContext()
   const { siteConfig = {} } = context
   const imgUrl = useBaseUrl('img/cover.svg')

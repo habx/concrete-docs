@@ -26,6 +26,18 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'components/',
+          activeBasePath: 'components',
+          label: 'Components',
+          position: 'left',
+        },
+        {
+          to: 'table/',
+          activeBasePath: 'table',
+          label: 'Table',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/habx/ui-core',
           label: 'GitHub',
           position: 'right',
