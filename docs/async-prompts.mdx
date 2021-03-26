@@ -3,7 +3,8 @@ title: Async prompts
 ---
 
 import styled from 'styled-components'
-import {confirm, notify, Button, Icon, Title, Text} from '@habx/ui-core'
+
+import { confirm, notify, Button, Icon, Title, Text } from '@habx/ui-core'
 
 ## Why async prompts ?
 
@@ -14,10 +15,10 @@ With React it can be a pain to add a validation modal after submition. We came u
 asynchronously.
 
 ## Confirm
+
 **Concrete** exports a `confirm` function that return a _promise_ waiting for user response.
 
 ### Usage
-
 
 ```jsx
 import { confirm, notify, Button } from '@habx/ui-core'
@@ -30,12 +31,15 @@ const MyComponent = () => {
 
   return <Button onClick={handleSubmit}>Click Me!</Button>
 }
-
 ```
 
 export const BasicConfirmUsage = () => {
   const handleSubmit = async () => {
-    const hasConfirmed = await confirm({ message: 'Do you want to confirm ?', confirmLabel: 'Yes', cancelLabel: 'No' })
+    const hasConfirmed = await confirm({
+      message: 'Do you want to confirm ?',
+      confirmLabel: 'Yes',
+      cancelLabel: 'No',
+    })
     notify(`User response is ${hasConfirmed ? 'yes' : 'no'}`)
   }
   return <Button onClick={handleSubmit}>Click Me!</Button>
@@ -51,69 +55,102 @@ as long as the code is behind the `Provider`.
 ### Basic usage
 
 ```jsx
-  const MyComponent = () => (
-    <Button
-      onClick={() => notify("I can be called from anwhere !")}
-    >
-      Click Me!
-    </Button>
-  )
+const MyComponent = () => (
+  <Button onClick={() => notify('I can be called from anwhere !')}>
+    Click Me!
+  </Button>
+)
 ```
 
-<Button onClick={() => notify("I can be called from anwhere !")}>Click Me!</Button>
+<Button onClick={() => notify('I can be called from anwhere !')}>
+  Click Me!
+</Button>
 
 ### With illustration
 
 ```jsx
-  const MyComponent = () => (
-    <Button onClick={() => notify({ message: 'hi', illustration: <Icon icon='3D-building-outline'/> })}>Click Me!</Button>
-  )
+const MyComponent = () => (
+  <Button
+    onClick={() =>
+      notify({
+        message: 'hi',
+        illustration: <Icon icon="3D-building-outline" />,
+      })
+    }
+  >
+    Click Me!
+  </Button>
+)
 ```
 
-<Button onClick={() => notify({ message: 'hi', illustration: <Icon icon='3D-building-outline'/> })}>Click Me!</Button>
-
-
+<Button
+  onClick={() =>
+    notify({ message: 'hi', illustration: <Icon icon="3D-building-outline" /> })
+  }
+>
+  Click Me!
+</Button>
 
 ### With JSX
 
 ```jsx
-  const MyComponent = () => {
-    const message = <div><Title type='regular'>Title</Title><Text>Text</Text></div>
-    return <Button onClick={() => notify({ message })}>Click Me!</Button>
-  }
+const MyComponent = () => {
+  const message = (
+    <div>
+      <Title type="regular">Title</Title>
+      <Text>Text</Text>
+    </div>
+  )
+  return <Button onClick={() => notify({ message })}>Click Me!</Button>
+}
 ```
 
-<Button onClick={() => notify({ message: <div><Title type='regular'>Title</Title><Text>Text</Text></div> })}>Click Me!</Button>
-
+<Button
+  onClick={() =>
+    notify({
+      message: (
+        <div>
+          <Title type="regular">Title</Title>
+          <Text>Text</Text>
+        </div>
+      ),
+    })
+  }
+>
+  Click Me!
+</Button>
 
 ### Markdown
 
 You can pass directly markdown to `notify` if you need more complex rendering without passing jsx
 
 ```jsx
-  const MyComponent = () => (
-    <Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>Click Me!</Button>
-  )
+const MyComponent = () => (
+  <Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>
+    Click Me!
+  </Button>
+)
 ```
 
-<Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>Click Me!</Button>
-
+<Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>
+  Click Me!
+</Button>
 
 ### Options
 
 You can pass a 2nd argument to notify to configure the notification as you like
 
-* `duration`: `number`
-* `type`: `'info | 'warning' | 'error'`
+- `duration`: `number`
+- `type`: `'info | 'warning' | 'error'`
 
 ```jsx
-  const MyComponent = () => (
-    <Button
-      onClick={() => notify("ERROR !", { duration: 10_000, type: 'error' })}
-    >
-      Click Me!
-    </Button>
-  )
+const MyComponent = () => (
+  <Button
+    onClick={() => notify('ERROR !', { duration: 10_000, type: 'error' })}
+  >
+    Click Me!
+  </Button>
+)
 ```
 
 #### Types
@@ -125,9 +162,15 @@ export const TypeContainer = styled.div`
 `
 
 <TypeContainer>
-  <Button small onClick={() => notify("info", { type: 'info' })}>info</Button>
-  <Button small warning onClick={() => notify("warning", { type: 'warning' })}>warning</Button>
-  <Button small error onClick={() => notify("error", { type: 'error' })}>error</Button>
+  <Button small onClick={() => notify('info', { type: 'info' })}>
+    info
+  </Button>
+  <Button small warning onClick={() => notify('warning', { type: 'warning' })}>
+    warning
+  </Button>
+  <Button small error onClick={() => notify('error', { type: 'error' })}>
+    error
+  </Button>
 </TypeContainer>
 
 ## Prompt

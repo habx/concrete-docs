@@ -5,7 +5,6 @@ slug: /
 
 ## Installation
 
-
 ```shell
 npm i @habx/ui-core
 ```
@@ -20,16 +19,13 @@ import { Provider as DesignSystemProvider, ThemeProvider } from '@habx/ui-core'
 const Providers = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <DesignSystemProvider>
-        {children}
-      </DesignSystemProvider>
+      <DesignSystemProvider>{children}</DesignSystemProvider>
     </ThemeProvider>
   )
 }
 ```
 
 You can now use safely **Concrete**
-
 
 ```typescript jsx
 import { Button } from '@habx/ui-core'
@@ -43,7 +39,8 @@ const App = ({ children }) => {
 }
 ```
 
-import { Button, notify } from '@habx/ui-core';
+import { Button, notify } from '@habx/ui-core'
 
-<Button onClick={() => notify("I can be display only with provider")}>Click Me!</Button>
-
+<Button onClick={() => notify('I can be display only with provider')}>
+  Click Me!
+</Button>

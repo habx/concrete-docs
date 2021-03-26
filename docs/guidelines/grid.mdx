@@ -2,15 +2,13 @@
 title: Grid
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData';
+import { usePluginData } from '@docusaurus/useGlobalData'
 
 export const Figma = () => {
   const figma = usePluginData('figma')
   const figmaData = JSON.parse(figma)
-  return (
-    <img src={figmaData.grid} alt="grid"/>
-  )
-};
+  return <img src={figmaData.grid} alt="grid" />
+}
 
 <Figma />
 

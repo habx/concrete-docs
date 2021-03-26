@@ -2,15 +2,13 @@
 title: Colors
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData';
+import { usePluginData } from '@docusaurus/useGlobalData'
 
 export const Figma = () => {
   const figma = usePluginData('figma')
   const figmaData = JSON.parse(figma)
-  return (
-    <img src={figmaData.colors} alt="colors"/>
-  )
-};
+  return <img src={figmaData.colors} alt="colors" />
+}
 
 <Figma />
 

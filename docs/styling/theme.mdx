@@ -2,44 +2,39 @@
 title: Theme
 ---
 
-import {DocuBackground} from '../../src/components/DocuBackground'
-
-
-
-
-
+import { DocuBackground } from '@site/src/components/DocuBackground'
 import styled from 'styled-components'
+
 import { theme, Background, palette, Text } from '@habx/ui-core'
 
 ## Overview
 
 **Concrete** uses [styled-components](https://styled-components.com/) for its own styling, so it is already well integrated.
 Theme object is accessible directly in any styled component rendered under `Provider`.
-Colors should always be based on *theme* in order to have a consistent darkmode.
+Colors should always be based on _theme_ in order to have a consistent darkmode.
 
 ## Colors
 
 You can access a set of colors defined in the _theme_. They are
-* `primary`
-* `secondary`
-* `warning`
-* `error`
-* `success`
-* `background`
+
+- `primary`
+- `secondary`
+- `warning`
+- `error`
+- `success`
+- `background`
 
 Most of our components have `error` and `warning` props that use the theme colors described here.
 
 #### Example usage
 
 ```jsx
-
 import styled from 'styled-components'
 import { theme } from '@habx/ui-core'
 
 export const SpanWithPrimaryColor = styled.span`
   color: ${theme.color('primary')};
 `
-
 ```
 
 export const SpanWithPrimaryColor = styled.span`
@@ -52,54 +47,65 @@ export const SpanWithPrimaryColor = styled.span`
 
 Main colors comes with 6 variations useful when you want contrast in your components.
 
-* `calmer`
-* `calm`
-* `base` (default)
-* `loud`
-* `louder`
-* `contrastText`
+- `calmer`
+- `calm`
+- `base` (default)
+- `loud`
+- `louder`
+- `contrastText`
 
 export const DivWithPrimaryCalmColor = styled.div`
-  color: ${({ variation, ...props }) => theme.color('primary', { variation })(props)};
+  color: ${({ variation, ...props }) =>
+    theme.color('primary', { variation })(props)};
   padding: 8px 24px;
 `
 
 <DocuBackground backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
-  <DivWithPrimaryCalmColor variation='calmer'>I'm calmer primary color !</DivWithPrimaryCalmColor>
-  <DivWithPrimaryCalmColor variation='calm'>I'm calm primary color !</DivWithPrimaryCalmColor>
-  <DivWithPrimaryCalmColor variation='base'>I'm base primary color !</DivWithPrimaryCalmColor>
-  <DivWithPrimaryCalmColor variation='loud'>I'm loud primary color !</DivWithPrimaryCalmColor>
-  <DivWithPrimaryCalmColor variation='louder'>I'm louder primary color !</DivWithPrimaryCalmColor>
-  <DivWithPrimaryCalmColor variation='contrastText'>I'm contrastText primary color !</DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="calmer">
+    I'm calmer primary color !
+  </DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="calm">
+    I'm calm primary color !
+  </DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="base">
+    I'm base primary color !
+  </DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="loud">
+    I'm loud primary color !
+  </DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="louder">
+    I'm louder primary color !
+  </DivWithPrimaryCalmColor>
+  <DivWithPrimaryCalmColor variation="contrastText">
+    I'm contrastText primary color !
+  </DivWithPrimaryCalmColor>
 </DocuBackground>
 
 #### Example
 
 ```jsx
-
 import styled from 'styled-components'
 import { theme } from '@habx/ui-core'
 
 export const SpanWithPrimaryColor = styled.span`
   color: ${theme.color('primary', { variation: 'calm' })};
 `
-
 ```
-
 
 ### Neutral color
 
 Neutral color is also defined in the _theme_ and comes with a scale of strengths from 0 to 1000 with 100 steps.
 It will adapt its color if background is dark or light.
 
-
-export const NeutralColorExample = () =>
+export const NeutralColorExample = () => (
   <div>
-    {new Array(11).fill(0).map((_, index) =>
-      <DivWithNeutralColor key={index} strength={`${index * 100}`}>I'm a neutral color with
-        strength {index * 100}</DivWithNeutralColor>
-    )}
+    {new Array(11).fill(0).map((_, index) => (
+      <DivWithNeutralColor key={index} strength={`${index * 100}`}>
+        I'm a neutral color with strength {index * 100}
+      </DivWithNeutralColor>
+    ))}
   </div>
+)
 
 <Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <NeutralColorExample />
@@ -108,20 +114,18 @@ export const NeutralColorExample = () =>
 ##### In dark mode
 
 <Background backgroundColor={palette.neutralWhiteWithIntensityFading[100]}>
-  <NeutralColorExample/>
+  <NeutralColorExample />
 </Background>
 
-
 #### Example usage
-```jsx
 
+```jsx
 import styled from 'styled-components'
 import { theme } from '@habx/ui-core'
 
 export const SpanWithNeutralColor = styled.span`
   color: ${theme.neutralColor('800')};
 `
-
 ```
 
 export const DivWithNeutralColor = styled.div`
@@ -151,26 +155,27 @@ export const SpanWithTextColor = styled.span`
 You can change opacity of colors if needed by passing the `opacity` props in config
 
 ```js
-  theme.color('primary', { opacity: 0.5 })
-  theme.neutralColor('800', { opacity: 0.5 })
+theme.color('primary', { opacity: 0.5 })
+theme.neutralColor('800', { opacity: 0.5 })
 ```
 
 If you want to play with opacity color intensity without transparency, you can add the `gradient` property with value set
 to `withIntensityFading` (only available with `neutralColor`)
 
 ```js
-  theme.neutralColor('800', { opacity: 0.5, gradient: 'withIntensityFading' })
+theme.neutralColor('800', { opacity: 0.5, gradient: 'withIntensityFading' })
 ```
 
 ## Shadow
 
 Shadow comes also from theme with a scale of 6 keys
-* `flat`
-* `lower`
-* `low`
-* `regular`
-* `high`
-* `higher`
+
+- `flat`
+- `lower`
+- `low`
+- `regular`
+- `high`
+- `higher`
 
 export const ShadowBoxContainer = styled.div`
   display: grid;
@@ -191,14 +196,23 @@ export const ShadowBox = styled.div`
 
 <Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <ShadowBoxContainer>
-    <ShadowBox shadow='lower'><Text>Lower</Text></ShadowBox>
-    <ShadowBox shadow='low'><Text>Low</Text></ShadowBox>
-    <ShadowBox shadow='regular'><Text>Regular</Text></ShadowBox>
-    <ShadowBox shadow='high'><Text>High</Text></ShadowBox>
-    <ShadowBox shadow='higher'><Text>Higher</Text></ShadowBox>
+    <ShadowBox shadow="lower">
+      <Text>Lower</Text>
+    </ShadowBox>
+    <ShadowBox shadow="low">
+      <Text>Low</Text>
+    </ShadowBox>
+    <ShadowBox shadow="regular">
+      <Text>Regular</Text>
+    </ShadowBox>
+    <ShadowBox shadow="high">
+      <Text>High</Text>
+    </ShadowBox>
+    <ShadowBox shadow="higher">
+      <Text>Higher</Text>
+    </ShadowBox>
   </ShadowBoxContainer>
 </Background>
-
 
 #### Example
 
@@ -207,10 +221,9 @@ import styled from 'styled-components'
 import { theme } from '@habx/ui-core'
 
 export const DivWithLowerShadow = styled.div`
-    box-shadow: ${theme.shadow('lower')};
+  box-shadow: ${theme.shadow('lower')};
 `
 ```
-
 
 ## Font
 
@@ -218,27 +231,27 @@ You can always import font-family from theme by doing
 
 ```jsx
 export const FontFamily = styled.span`
- font-family: ${theme.font()};
+  font-family: ${theme.font()};
 `
 ```
-
 
 ## Access theme via hook
 
 Sometime you will need to access theme properties in the js scope. You can get that from the hook `useThemeVariant`
 
 ```jsx
-  import { Background, useThemeVariant } from '@habx/ui-core'
+import { Background, useThemeVariant } from '@habx/ui-core'
 
-  const MyComponent = () => {
-    const theme = useThemeVariant()
+const MyComponent = () => {
+  const theme = useThemeVariant()
 
-    return <Background backgroundColor={theme.neutralColor.withIntensityFading[200]}>
+  return (
+    <Background backgroundColor={theme.neutralColor.withIntensityFading[200]}>
       ...
     </ProjectsStatusDashboardContainer>
-  }
+  )
+}
 ```
-
 
 ## Dark Mode
 

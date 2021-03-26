@@ -26,6 +26,7 @@ export const StorybookDoc: React.VoidFunctionComponent<StorybookDocProps> = (
   }
   return (
     <iframe
+      title="iframe"
       ref={iframeRef}
       frameBorder="0"
       width="100%"

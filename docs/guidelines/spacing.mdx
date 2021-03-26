@@ -2,15 +2,13 @@
 title: Spacing
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData';
+import { usePluginData } from '@docusaurus/useGlobalData'
 
 export const Figma = () => {
   const figma = usePluginData('figma')
   const figmaData = JSON.parse(figma)
-  return (
-    <img src={figmaData.spacing} alt="spacing"/>
-  )
-};
+  return <img src={figmaData.spacing} alt="spacing" />
+}
 
 <Figma />
 
