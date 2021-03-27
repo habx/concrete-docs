@@ -38,6 +38,12 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'guidelines/',
+          activeBasePath: 'guidelines',
+          label: 'Guidelines',
+          position: 'left',
+        },
+        {
           label: 'Dribble',
           href: 'https://dribbble.com/habx',
           position: 'right',
@@ -88,5 +94,17 @@ module.exports = {
       },
     ],
   ],
-  plugins: [path.resolve(__dirname, './plugins/figma')],
+  plugins: [
+    path.resolve(__dirname, './plugins/figma'),
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'guidelines',
+        path: 'guidelines',
+        routeBasePath: 'guidelines',
+        sidebarPath: require.resolve('./sidebarsGuidelines.js'),
+        // ... other options
+      },
+    ],
+  ],
 }

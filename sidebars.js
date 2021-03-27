@@ -17,19 +17,5 @@ module.exports = {
         'styling/custom-theme',
       ],
     },
-    {
-      type: 'category',
-      label: 'Colors',
-      items: ['colors/colors', 'colors/ui-colors', 'colors/palette'],
-    },
-    {
-      type: 'category',
-      label: 'Guidelines',
-      items: [
-        'guidelines/grid',
-        'guidelines/breakpoints',
-        'guidelines/spacing',
-      ],
-    },
   ],
 }
