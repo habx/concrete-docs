@@ -2,14 +2,8 @@
 title: Grid
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData'
+import { FigmaNode } from '@site/src/components/FigmaNode'
 
-export const Figma = () => {
-  const figma = usePluginData('figma')
-  const figmaData = JSON.parse(figma)
-  return <img src={figmaData.grid} alt="grid" />
-}
-
-<Figma />
+<FigmaNode id="grid" />
 
 [see figma](https://www.figma.com/file/9tNXeY1XbVmfHEVCYYtoal/03---%F0%9F%8E%A8-Branding-guidelines)

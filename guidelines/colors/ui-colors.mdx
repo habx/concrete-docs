@@ -2,14 +2,8 @@
 title: UI Colors
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData'
+import { FigmaNode } from '@site/src/components/FigmaNode'
 
-export const Figma = () => {
-  const figma = usePluginData('figma')
-  const figmaData = JSON.parse(figma)
-  return <img src={figmaData['ui-colors']} alt="ui-colors" />
-}
-
-<Figma />
+<FigmaNode id="ui-colors" />
 
 [see figma](https://www.figma.com/file/9tNXeY1XbVmfHEVCYYtoal/03---%F0%9F%8E%A8-Branding-guidelines)
