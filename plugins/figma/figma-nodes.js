@@ -34,4 +34,9 @@ module.exports = [
     nodeId: '103%3A1006',
     key: 'table-anatomy',
   },
+  {
+    pageId: '9tNXeY1XbVmfHEVCYYtoal',
+    nodeId: '2%3A777',
+    key: 'guideline-cover',
+  },
 ]
