@@ -7,6 +7,8 @@ import styled from 'styled-components'
 
 import { Background, breakpoints, Button, Title } from '@habx/ui-core'
 
+import { DocuBackground } from '../components/DocuBackground'
+
 export const HomeImg = styled.img`
   position: absolute;
   z-index: -1;
@@ -47,7 +49,7 @@ export const Features = styled.div`
 export const FeatureContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   img {
     width: 100%;
@@ -107,11 +109,13 @@ export default () => {
           </Link>
         </HomeHeadlineContainer>
       </HomeMainContainer>
-      <Features>
-        {features.map((feature, index) => (
-          <Feature key={index} {...feature} />
-        ))}
-      </Features>
+      <DocuBackground>
+        <Features>
+          {features.map((feature, index) => (
+            <Feature key={index} {...feature} />
+          ))}
+        </Features>
+      </DocuBackground>
     </Layout>
   )
 }
