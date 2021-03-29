@@ -14,6 +14,7 @@ module.exports = {
         'styling/breakpoints',
         'styling/custom-theme',
         'styling/utils',
+        'styling/palette',
       ],
     },
   ],
