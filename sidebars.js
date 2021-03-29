@@ -5,8 +5,6 @@ module.exports = {
     'typo',
     'modal-like',
     'async-prompts',
-    'utils',
-    'hooks',
     {
       type: 'category',
       label: 'Styling',
@@ -15,6 +13,7 @@ module.exports = {
         'styling/animations',
         'styling/breakpoints',
         'styling/custom-theme',
+        'styling/utils',
       ],
     },
   ],
