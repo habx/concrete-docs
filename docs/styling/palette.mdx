@@ -2,6 +2,7 @@
 title: Palette
 ---
 
+import { DocuBackground } from '@site/src/components/DocuBackground'
 import styled from 'styled-components'
 
 import { palette, Title, stringifyColor, Text, Background } from '@habx/ui-core'
@@ -40,7 +41,7 @@ export const PaletteElementContainer = styled.div`
   height: 100px;
 `
 
-<div>
+<DocuBackground>
   {Object.entries(palette).map(([key, color]) => (
     <div>
       <Title type="section">{key}</Title>
@@ -58,4 +59,4 @@ export const PaletteElementContainer = styled.div`
       </ColorsContainer>
     </div>
   ))}
-</div>
+</DocuBackground>
