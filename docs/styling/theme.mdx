@@ -255,12 +255,52 @@ const MyComponent = () => {
 }
 ```
 
-// TODO
-
 ### useCurrentBackground
 
-### useGetColorFromType
+Allows accessing current background color through the nearest `Background` provider.
+
+You can overwrite the default behavior and access to the root background color by passing the config `useRootTheme`.
+
+```jsx
+const nearestBackground = useCurrentBackground({ useRootTheme: true })
+const rootBackground = useCurrentBackground({ useRootTheme: true })
+```
 
 ### useHasColoredBackground
 
+Abstraction of `useCurrentBackground` to know if background is making components using _dark_ or _light_ theme variant
+
 ## Dark Mode
+
+Dark theme variant is used when nearest `Background` provider has a dark color as `backgroundColor` props.
+
+export const BackgroundWithPadding = styled(Background)`
+  padding: 8px 24px;
+  margin: 32px 0;
+`
+
+<BackgroundWithPadding
+  backgroundColor={palette.neutralWhiteWithIntensityFading[900]}
+>
+  <Text>I'm in dark mode</Text>
+</BackgroundWithPadding>
+
+<BackgroundWithPadding
+  backgroundColor={palette.neutralWhiteWithIntensityFading[100]}
+>
+  <Text>I'm in light mode</Text>
+</BackgroundWithPadding>
+
+```jsx
+  import { Text, Background } from '@habx/ui-core';
+
+  <Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
+    <Text>I'm in dark mode</Text>
+  </Background>
+
+
+  <Background backgroundColor={palette.neutralWhiteWithIntensityFading[100]}>
+    <Text>I'm in light mode</Text>
+  </Background>
+
+```
