@@ -5,7 +5,14 @@ title: Palette
 import { DocuBackground } from '@site/src/components/DocuBackground'
 import styled from 'styled-components'
 
-import { palette, Title, stringifyColor, Text, Background } from '@habx/ui-core'
+import {
+  palette,
+  Title,
+  stringifyColor,
+  Text,
+  Background,
+  breakpoints,
+} from '@habx/ui-core'
 
 **Concrete** comes with a special palette made with shades of pretty colors.
 
@@ -25,7 +32,6 @@ export const COLORS_SHADES_LENGTH = 8
 
 export const Color = styled(Background)`
   height: 150px;
-  margin-bottom: 32px;
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -35,6 +41,10 @@ export const Color = styled(Background)`
 export const ColorsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${COLORS_SHADES_LENGTH}, 1fr);
+  margin-bottom: 32px;
+  @media (${breakpoints.below.tablet}) {
+    grid-template-columns: repeat(${COLORS_SHADES_LENGTH / 2}, 1fr);
+  }
 `
 
 export const PaletteElementContainer = styled.div`
