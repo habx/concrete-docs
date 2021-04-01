@@ -15,6 +15,7 @@ module.exports = {
         'styling/custom-theme',
         'styling/utils',
         'styling/palette',
+        'styling/defaultTheme',
       ],
     },
   ],
