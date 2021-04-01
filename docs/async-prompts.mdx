@@ -175,6 +175,23 @@ export const TypeContainer = styled.div`
 
 ## Prompt
 
-Prompt is a full customizable async util that render either a `Modal` or a `Lightbox`
+Prompt is a full customizable async util that render either a `Modal` or a `LightBox`
 
-// TODO
+`prompt` takes a _function_ as first argument that should return an object with a `Component` field.
+It returns a promise that is resolved by calling the `onResolve` function passed in the object of the first argument.
+
+A `Modal` is used by default but you can pass `fullscreen: true` to use the `LightBox` component.
+Other `Modal` or `LightBox` props can be passed as params.
+
+### Example
+
+```jsx
+import { prompt } from '@habx/ui-core'
+
+const formResult = await prompt(({ onResolve }) => ({
+  Component: () => <form onSubmit={onResolve}>// you form</form>,
+}))
+if (formResult) {
+  // use your form result
+}
+```
