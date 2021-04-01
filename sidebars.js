@@ -7,6 +7,11 @@ module.exports = {
     'async-prompts',
     {
       type: 'category',
+      label: 'Table',
+      items: ['table/usage'],
+    },
+    {
+      type: 'category',
       label: 'Styling',
       items: [
         'styling/theme',
