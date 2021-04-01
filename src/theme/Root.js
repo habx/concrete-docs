@@ -5,8 +5,8 @@ import { createGlobalStyle } from 'styled-components'
 import { Provider, ThemeProvider, theme } from '@habx/ui-core'
 
 const GlobalStyle = createGlobalStyle`
-  
   :root {
+    font-family: ${theme.font()};
     --ifm-color-primary: ${theme.color('primary')};
     --ifm-color-primary-dark: ${theme.color('primary')};
     --ifm-color-primary-darker: ${theme.color('primary', {
