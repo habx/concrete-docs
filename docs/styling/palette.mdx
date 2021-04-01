@@ -53,14 +53,14 @@ export const PaletteElementContainer = styled.div`
 
 <DocuBackground>
   {Object.entries(palette).map(([key, color]) => (
-    <div>
+    <div key={key}>
       <Title type="section">{key}</Title>
       <ColorsContainer>
         {new Array(COLORS_SHADES_LENGTH).fill(0).map((_, index) => {
           const shadeIndex = (index + 1) * 100
           const paletteColor = color[shadeIndex]
           return (
-            <Color backgroundColor={paletteColor}>
+            <Color backgroundColor={paletteColor} key={paletteColor}>
               <Text variation="title">{shadeIndex}</Text>
               <Text type="caption">{stringifyColor(paletteColor)}</Text>
             </Color>

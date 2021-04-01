@@ -51,24 +51,27 @@ export const TableExample = () => {
 }
 ```
 
+export const data = [
+  { name: 'Jon', age: 19 },
+  { name: 'Eddy', age: 30 },
+  { name: 'Michel', age: 40 },
+]
+
+export const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+  },
+]
+
 export const TableExample = () => {
-  const data = [
-    { name: 'Jon', age: 19 },
-    { name: 'Eddy', age: 30 },
-    { name: 'Michel', age: 40 },
-  ]
   const tableInstance = useTable({
     data,
-    columns: [
-      {
-        Header: 'Name',
-        accessor: 'name',
-      },
-      {
-        Header: 'Age',
-        accessor: 'age',
-      },
-    ],
+    columns,
   })
   return <Table instance={tableInstance} />
 }
