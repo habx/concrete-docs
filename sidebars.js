@@ -1,7 +1,7 @@
 module.exports = {
   docs: [
     'getting-started',
-    'layouts',
+    // 'layouts', TODO
     'typo',
     'modal-like',
     'async-prompts',
