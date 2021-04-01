@@ -25,7 +25,7 @@ export const HomeMainContainer = styled(Background).attrs(() => ({
 `
 
 export const HomeHeadlineContainer = styled.div`
-  padding: 128px;
+  padding: 84px;
   display: grid;
   grid-gap: 32px;
 
@@ -90,10 +90,23 @@ export const Feature: React.FunctionComponent<FeatureProps> = ({
   )
 }
 
+export const LogoContainer = styled.div`
+  display: grid;
+  grid-gap: 12px;
+  img {
+    height: 80px;
+    &:first-child {
+      margin-left: -12px;
+    }
+  }
+`
+
 export default () => {
   const context = useDocusaurusContext()
   const { siteConfig = {} } = context
   const imgUrl = useBaseUrl('img/cover.svg')
+  const logoUrl = useBaseUrl(`img/logo-white.svg`)
+  const designSystemUrl = useBaseUrl(`img/design-system.svg`)
 
   return (
     <Layout
@@ -103,7 +116,10 @@ export default () => {
       <HomeMainContainer>
         <HomeImg src={imgUrl} alt="cover" />
         <HomeHeadlineContainer>
-          <Title type="headerBig">Making design concrete.</Title>
+          <LogoContainer>
+            <img height={80} src={logoUrl} alt="concrete" />
+            <img height={80} src={designSystemUrl} alt="designSystem" />
+          </LogoContainer>
           <Link to={useBaseUrl('docs/')}>
             <Button secondary>Get Started</Button>
           </Link>

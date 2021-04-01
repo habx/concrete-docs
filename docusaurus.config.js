@@ -13,10 +13,10 @@ module.exports = {
   projectName: 'concrete-docs',
   themeConfig: {
     navbar: {
-      title: 'Concrete',
       logo: {
-        alt: 'My Site Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-white.svg',
+        alt: 'Concrete',
       },
       items: [
         {

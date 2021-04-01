@@ -41,6 +41,14 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     background: none;
   }
+  .navbar__brand {
+    margin-top: -2px;
+    margin-right: 8px;
+  }
+  .navbar__logo {
+    height: 24px;
+    margin: 0;
+  }
 `
 
 export default ({ children }) => {
