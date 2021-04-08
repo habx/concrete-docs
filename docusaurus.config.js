@@ -96,6 +96,7 @@ module.exports = {
   ],
   plugins: [
     path.resolve(__dirname, './plugins/figma'),
+    path.resolve(__dirname, './plugins/cloudinary'),
     [
       '@docusaurus/plugin-content-docs',
       {
