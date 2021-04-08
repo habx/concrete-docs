@@ -6,7 +6,7 @@ export default () => (
     <iframe
       title="table"
       style={{ height: 'calc(100vh - var(--ifm-navbar-height))' }}
-      src="https://habx.github.io/ui-table/?path=/story/table-usetable--basic-example"
+      src="https://habx.github.io/ui-table"
       frameBorder="0"
       height="100%"
       width="100%"
