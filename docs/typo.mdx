@@ -64,3 +64,18 @@ you will allow the display of rich text in markdown format.
 ```
 
 <Text markdown>**I'm bold**</Text>
+
+## Font Family
+
+To use the right font with **Concrete** you will need to add the `EuclidFont` component at the root of your app.
+
+```jsx
+import { EuclidFont, Provider } from "@habx/ui-core";
+export const App = () => {
+  return (
+    <Provider>
+      <EuclidFont />
+    </Provider>
+  );
+};
+```

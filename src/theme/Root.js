@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
-import { Provider, ThemeProvider, theme } from '@habx/ui-core'
+import { Provider, ThemeProvider, theme, EuclidFont } from '@habx/ui-core'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -58,6 +58,7 @@ export default ({ children }) => {
         {children}
         <GlobalStyle />
       </ThemeProvider>
+      <EuclidFont />
     </Provider>
   )
 }
