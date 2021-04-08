@@ -1,5 +1,5 @@
 ---
-title: Usage
+title: Table usage
 ---
 
 import { DocuBackground } from '@site/src/components/DocuBackground'
@@ -29,23 +29,27 @@ Here is how it works.
 ```jsx
 import { useTable, Table } from '@habx/ui-table'
 
+export const data = [
+  { name: 'Jon', age: 19 },
+  { name: 'Eddy', age: 30 },
+  { name: 'Michel', age: 40 },
+]
+
+export const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+  },
+]
+
 export const TableExample = () => {
   const tableInstance = useTable({
-    data: [
-      { name: 'Jon', age: 19 },
-      { name: 'Eddy', age: 30 },
-      { name: 'Michel', age: 40 },
-    ],
-    columns: [
-      {
-        Header: 'Name',
-        accessor: 'name',
-      },
-      {
-        Header: 'Age',
-        accessor: 'age',
-      },
-    ],
+    data, // should be memoized
+    columns, // should be memoized
   })
   return <Table instance={tableInstance} />
 }

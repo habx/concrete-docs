@@ -4,6 +4,8 @@ import * as React from 'react'
 export default () => (
   <Layout title="Table" description="Powered by storybook">
     <iframe
+      title="table"
+      style={{ height: 'calc(100vh - var(--ifm-navbar-height))' }}
       src="https://habx.github.io/ui-table/?path=/story/table-usetable--basic-example"
       frameBorder="0"
       height="100%"
