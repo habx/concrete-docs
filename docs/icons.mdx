@@ -2,12 +2,19 @@
 title: Icons
 ---
 
-import { usePluginData } from '@docusaurus/useGlobalData'
-import { DocuBackground } from '@site/src/components/DocuBackground'
-import { searchInString } from '@site/src/lib/strings'
-import styled from 'styled-components'
+import { usePluginData } from "@docusaurus/useGlobalData";
+import { DocuBackground } from "@site/src/components/DocuBackground";
+import { searchInString } from "@site/src/lib/strings";
+import styled from "styled-components";
 
-import { Icon, SearchBar, Text, breakpoints, Title, theme } from '@habx/ui-core'
+import {
+  Icon,
+  SearchBar,
+  Text,
+  breakpoints,
+  Title,
+  theme,
+} from "@habx/ui-core";
 
 export const IconsContainer = styled.div`
   display: grid;
@@ -17,7 +24,7 @@ export const IconsContainer = styled.div`
   @media (${breakpoints.below.tablet}) {
     grid-template-columns: repeat(3, 1fr);
   }
-`
+`;
 
 export const IconBox = styled.div`
   display: flex;
@@ -25,30 +32,30 @@ export const IconBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: ${theme.color('secondary')};
+  color: ${theme.color("secondary")};
   > :first-child {
     margin-bottom: 8px;
   }
-`
+`;
 
 export const Placeholder = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 export const Icons = () => {
-  const cloudinary = usePluginData('cloudinary')
-  const cloudinaryData = JSON.parse(cloudinary)
-  const [search, setSearch] = React.useState('')
+  const cloudinary = usePluginData("cloudinary");
+  const cloudinaryData = JSON.parse(cloudinary);
+  const [search, setSearch] = React.useState("");
   const icons =
     cloudinaryData?.icons?.filter((icon) =>
-      search.split(' ').some((searchEl, index) => {
+      search.split(" ").some((searchEl, index) => {
         if (!searchEl.length && index > 0) {
-          return false
+          return false;
         }
-        return searchInString(icon, searchEl)
+        return searchInString(icon, searchEl);
       })
-    ) ?? []
+    ) ?? [];
   return (
     <div>
       <SearchBar
@@ -71,8 +78,8 @@ export const Icons = () => {
         ))}
       </IconsContainer>
     </div>
-  )
-}
+  );
+};
 
 <DocuBackground>
   <Icons />

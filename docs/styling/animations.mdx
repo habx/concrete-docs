@@ -2,7 +2,7 @@
 title: Animations
 ---
 
-import styled from 'styled-components'
+import styled from "styled-components";
 
 import {
   ActionBar,
@@ -11,7 +11,7 @@ import {
   Button,
   Card,
   palette,
-} from '@habx/ui-core'
+} from "@habx/ui-core";
 
 ## Built in animations
 
@@ -26,56 +26,56 @@ You can use some of our built-in animations listed here
 ### Example
 
 ```jsx
-import { animations } from '@habx/ui-core'
+import { animations } from "@habx/ui-core";
 
 const MyComponent = styled.div`
-  animation: ${animations('emergeSlantFromTop')};
-`
+  animation: ${animations("emergeSlantFromTop")};
+`;
 ```
 
 export const AnimationContainer = styled(Background)`
   padding: 64px;
-`
+`;
 
 export const StyledAnimationExample = styled(Card)`
   height: 200px;
   width: 200px;
   margin: auto;
   background: white !important;
-  &[data-animation='emerge'] {
-    animation: ${animations('emerge')};
+  &[data-animation="emerge"] {
+    animation: ${animations("emerge")};
   }
-  &[data-animation='emergeSlantFromTop'] {
-    animation: ${animations('emergeSlantFromTop', { duration: 'l' })};
+  &[data-animation="emergeSlantFromTop"] {
+    animation: ${animations("emergeSlantFromTop", { duration: "l" })};
   }
-  &[data-animation='emergeSlantFromBottom'] {
-    animation: ${animations('emergeSlantFromBottom', { duration: 'l' })};
+  &[data-animation="emergeSlantFromBottom"] {
+    animation: ${animations("emergeSlantFromBottom", { duration: "l" })};
   }
-  &[data-animation='dive'] {
-    animation: ${animations('dive', { duration: 'l' })};
+  &[data-animation="dive"] {
+    animation: ${animations("dive", { duration: "l" })};
   }
-  &[data-animation='diveSlant'] {
-    animation: ${animations('diveSlant', { duration: 'l' })};
+  &[data-animation="diveSlant"] {
+    animation: ${animations("diveSlant", { duration: "l" })};
   }
-`
+`;
 
 export const AnimationExample = () => {
-  const [animation, setAnimation] = React.useState(null)
+  const [animation, setAnimation] = React.useState(null);
   const animationsKeys = [
-    'emerge',
-    'emergeSlantFromTop',
-    'emergeSlantFromBottom',
-    'dive',
-    'diveSlant',
-  ]
+    "emerge",
+    "emergeSlantFromTop",
+    "emergeSlantFromBottom",
+    "dive",
+    "diveSlant",
+  ];
   const handleSetAnimation = (key) => {
-    setAnimation(key)
+    setAnimation(key);
     setTimeout(
       () =>
         setAnimation((currentKey) => (key === currentKey ? null : currentKey)),
       1000
-    )
-  }
+    );
+  };
   return (
     <div>
       <StyledAnimationExample data-animation={animation} />
@@ -93,8 +93,8 @@ export const AnimationExample = () => {
         ))}
       </ActionBar>
     </div>
-  )
-}
+  );
+};
 
 <AnimationContainer
   backgroundColor={palette.neutralWhiteWithIntensityFading[500]}
@@ -107,11 +107,11 @@ export const AnimationExample = () => {
 **Concrete** comes with small utility to help having consistent animation duration and type.
 
 ```jsx
-import { transition } from '@habx/ui-core'
+import { transition } from "@habx/ui-core";
 
 const MyComponent = styled.div`
   transition: ${transition($cssKey)};
-`
+`;
 ```
 
 ## Durations
@@ -124,10 +124,10 @@ You can customize tue duration with the following keys:
 - `l`
 
 ```jsx
-import { transition, animations } from '@habx/ui-core'
+import { transition, animations } from "@habx/ui-core";
 
 const MyComponent = styled.div`
-  transition: ${transition('all', { duration: 'xs' })}
-  animation: ${animations('diveSlant', { duration: 'l' })}
-`
+  transition: ${transition("all", { duration: "xs" })}
+  animation: ${animations("diveSlant", { duration: "l" })}
+`;
 ```
