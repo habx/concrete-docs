@@ -2,10 +2,10 @@
 title: Theme
 ---
 
-import { DocuBackground } from '@site/src/components/DocuBackground'
-import styled from 'styled-components'
+import { DocuBackground } from "@site/src/components/DocuBackground";
+import styled from "styled-components";
 
-import { theme, Background, palette, Text } from '@habx/ui-core'
+import { theme, Background, palette, Text } from "@habx/ui-core";
 
 ## Overview
 
@@ -29,17 +29,17 @@ Most of our components have `error` and `warning` props that use the theme color
 #### Example usage
 
 ```jsx
-import styled from 'styled-components'
-import { theme } from '@habx/ui-core'
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
 
 export const SpanWithPrimaryColor = styled.span`
-  color: ${theme.color('primary')};
-`
+  color: ${theme.color("primary")};
+`;
 ```
 
 export const SpanWithPrimaryColor = styled.span`
-  color: ${theme.color('primary')};
-`
+  color: ${theme.color("primary")};
+`;
 
 <SpanWithPrimaryColor>I'm primary color !</SpanWithPrimaryColor>
 
@@ -56,9 +56,9 @@ Main colors comes with 6 variations useful when you want contrast in your compon
 
 export const DivWithPrimaryCalmColor = styled.div`
   color: ${({ variation, ...props }) =>
-    theme.color('primary', { variation })(props)};
+    theme.color("primary", { variation })(props)};
   padding: 8px 24px;
-`
+`;
 
 <DocuBackground backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <DivWithPrimaryCalmColor variation="calmer">
@@ -84,12 +84,12 @@ export const DivWithPrimaryCalmColor = styled.div`
 #### Example
 
 ```jsx
-import styled from 'styled-components'
-import { theme } from '@habx/ui-core'
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
 
 export const SpanWithPrimaryColor = styled.span`
-  color: ${theme.color('primary', { variation: 'calm' })};
-`
+  color: ${theme.color("primary", { variation: "calm" })};
+`;
 ```
 
 ### Neutral color
@@ -105,7 +105,7 @@ export const NeutralColorExample = () => (
       </DivWithNeutralColor>
     ))}
   </div>
-)
+);
 
 <Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <NeutralColorExample />
@@ -120,18 +120,18 @@ export const NeutralColorExample = () => (
 #### Example usage
 
 ```jsx
-import styled from 'styled-components'
-import { theme } from '@habx/ui-core'
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
 
 export const SpanWithNeutralColor = styled.span`
-  color: ${theme.neutralColor('800')};
-`
+  color: ${theme.neutralColor("800")};
+`;
 ```
 
 export const DivWithNeutralColor = styled.div`
   color: ${({ strength, ...props }) => theme.neutralColor(strength)(props)};
   padding: 8px 24px;
-`
+`;
 
 ### Text color
 
@@ -140,12 +140,12 @@ Same case for text color. A color with variation is defined in theme, and you ca
 #### Example
 
 ```jsx
-import styled from 'styled-components'
-import { theme } from '@habx/ui-core'
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
 
 export const SpanWithTextColor = styled.span`
   color: ${theme.textColor()};
-`
+`;
 ```
 
 ### Variations
@@ -155,15 +155,15 @@ export const SpanWithTextColor = styled.span`
 You can change opacity of colors if needed by passing the `opacity` props in config
 
 ```js
-theme.color('primary', { opacity: 0.5 })
-theme.neutralColor('800', { opacity: 0.5 })
+theme.color("primary", { opacity: 0.5 });
+theme.neutralColor("800", { opacity: 0.5 });
 ```
 
 If you want to play with opacity color intensity without transparency, you can add the `gradient` property with value set
 to `withIntensityFading` (only available with `neutralColor`)
 
 ```js
-theme.neutralColor('800', { opacity: 0.5, gradient: 'withIntensityFading' })
+theme.neutralColor("800", { opacity: 0.5, gradient: "withIntensityFading" });
 ```
 
 #### Dynamic
@@ -172,15 +172,15 @@ If you want your component to use props `warning` and `error`, add `dynamic: tru
 
 ```jsx
 const DynamicComponent = styled.div`
-  border: 1px solid ${theme.color('primary', { dynamic: true })};
-`
+  border: 1px solid ${theme.color("primary", { dynamic: true })};
+`;
 const App = () => (
   <div>
     <DynamicComponent /> // => Border will take the primary color
     <DynamicComponent warning /> // => Border will take the warning color
     <DynamicComponent error /> // => Border will take the error color
   </div>
-)
+);
 ```
 
 #### Color variation
@@ -189,8 +189,8 @@ The name of the prop we want to use to override manually the variation of the te
 
 ```jsx
 const MyComponent = styled.div`
-  color: ${theme.textColor('text', { variationPropName: 'variation' })};
-`
+  color: ${theme.textColor("text", { variationPropName: "variation" })};
+`;
 
 const App = () => (
   <div>
@@ -199,7 +199,7 @@ const App = () => (
     <MyComponent variation="lowContrast" /> // => Text will take the theme color
     in the "lowContrast" variation
   </div>
-)
+);
 ```
 
 #### Custom props variation
@@ -209,8 +209,8 @@ Note that if you pass a value to the prop defined here, we won't apply any varia
 
 ```jsx
 const MyComponent = styled.div`
-  color: ${theme.textColor('text', { valuePropName: 'textColor' })};
-`
+  color: ${theme.textColor("text", { valuePropName: "textColor" })};
+`;
 const App = () => (
   <div>
     <MyComponent />
@@ -218,7 +218,7 @@ const App = () => (
     config or overwritten in variationPropName)
     <MyComponent textColor="red" /> // => Text will be red
   </div>
-)
+);
 ```
 
 ## Shadow
@@ -237,7 +237,7 @@ export const ShadowBoxContainer = styled.div`
   grid-gap: 24px;
   grid-template-columns: repeat(6, 1fr);
   padding: 32px;
-`
+`;
 
 export const ShadowBox = styled.div`
   height: 100px;
@@ -247,7 +247,7 @@ export const ShadowBox = styled.div`
   align-items: center;
   box-shadow: ${({ shadow, ...props }) => theme.shadow(shadow)(props)};
   background: white;
-`
+`;
 
 <Background backgroundColor={palette.neutralWhiteWithIntensityFading[900]}>
   <ShadowBoxContainer>
@@ -272,12 +272,12 @@ export const ShadowBox = styled.div`
 #### Example
 
 ```jsx
-import styled from 'styled-components'
-import { theme } from '@habx/ui-core'
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
 
 export const DivWithLowerShadow = styled.div`
-  box-shadow: ${theme.shadow('lower')};
-`
+  box-shadow: ${theme.shadow("lower")};
+`;
 ```
 
 ## Font
@@ -287,7 +287,7 @@ You can always import font-family from theme by doing
 ```jsx
 export const FontFamily = styled.span`
   font-family: ${theme.font()};
-`
+`;
 ```
 
 ## Hooks
@@ -297,17 +297,17 @@ export const FontFamily = styled.span`
 Sometime you will need to access theme properties in the js scope. You can get that from the hook `useThemeVariant`
 
 ```jsx
-import { Background, useThemeVariant } from '@habx/ui-core'
+import { Background, useThemeVariant } from "@habx/ui-core";
 
 const MyComponent = () => {
-  const theme = useThemeVariant()
+  const theme = useThemeVariant();
 
   return (
     <Background backgroundColor={theme.neutralColor.withIntensityFading[200]}>
       ...
     </ProjectsStatusDashboardContainer>
-  )
-}
+  );
+};
 ```
 
 ### useCurrentBackground
@@ -317,8 +317,8 @@ Allows accessing current background color through the nearest `Background` provi
 You can overwrite the default behavior and access to the root background color by passing the config `useRootTheme`.
 
 ```jsx
-const nearestBackground = useCurrentBackground({ useRootTheme: true })
-const rootBackground = useCurrentBackground({ useRootTheme: true })
+const nearestBackground = useCurrentBackground({ useRootTheme: true });
+const rootBackground = useCurrentBackground({ useRootTheme: true });
 ```
 
 ### useHasColoredBackground
@@ -332,7 +332,7 @@ Dark theme variant is used when nearest `Background` provider has a dark color a
 export const BackgroundWithPadding = styled(Background)`
   padding: 8px 24px;
   margin: 32px 0;
-`
+`;
 
 <BackgroundWithPadding
   backgroundColor={palette.neutralWhiteWithIntensityFading[900]}

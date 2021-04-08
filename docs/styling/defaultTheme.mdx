@@ -2,8 +2,8 @@
 title: Default Theme
 ---
 
-import { DocuBackground } from '@site/src/components/DocuBackground'
-import styled from 'styled-components'
+import { DocuBackground } from "@site/src/components/DocuBackground";
+import styled from "styled-components";
 
 import {
   Background,
@@ -11,7 +11,7 @@ import {
   Text,
   Title,
   useThemeVariant,
-} from '@habx/ui-core'
+} from "@habx/ui-core";
 
 export const Color = styled(Background)`
   height: 150px;
@@ -19,23 +19,23 @@ export const Color = styled(Background)`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-`
+`;
 
 export const COLORS_KEYS = [
-  'primary',
-  'secondary',
-  'warning',
-  'error',
-  'success',
-]
+  "primary",
+  "secondary",
+  "warning",
+  "error",
+  "success",
+];
 export const COLORS_VARIATIONS = [
-  'calmer',
-  'calm',
-  'base',
-  'loud',
-  'louder',
-  'contrastText',
-]
+  "calmer",
+  "calm",
+  "base",
+  "loud",
+  "louder",
+  "contrastText",
+];
 
 export const ColorVariationsContainer = styled.div`
   display: grid;
@@ -44,10 +44,10 @@ export const ColorVariationsContainer = styled.div`
   @media (${breakpoints.below.tablet}) {
     grid-template-columns: repeat(${COLORS_VARIATIONS.length / 2}, 1fr);
   }
-`
+`;
 
 export const ColorVariations = ({ colorKey }) => {
-  const theme = useThemeVariant()
+  const theme = useThemeVariant();
   return (
     <div>
       <Title type="section">{colorKey}</Title>
@@ -62,8 +62,8 @@ export const ColorVariations = ({ colorKey }) => {
         ))}
       </ColorVariationsContainer>
     </div>
-  )
-}
+  );
+};
 
 ## Colors
 

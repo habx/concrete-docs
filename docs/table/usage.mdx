@@ -2,10 +2,10 @@
 title: Table usage
 ---
 
-import { DocuBackground } from '@site/src/components/DocuBackground'
-import { ResetTableStyles } from '@site/src/components/ResetTable'
+import { DocuBackground } from "@site/src/components/DocuBackground";
+import { ResetTableStyles } from "@site/src/components/ResetTable";
 
-import { useTable, Table } from '@habx/ui-table'
+import { useTable, Table } from "@habx/ui-table";
 
 ## Overview
 
@@ -27,58 +27,58 @@ So be sure to understand how [react-table](https://react-table.tanstack.com/) ho
 Here is how it works.
 
 ```jsx
-import { useTable, Table } from '@habx/ui-table'
+import { useTable, Table } from "@habx/ui-table";
 
 export const data = [
-  { name: 'Jon', age: 19 },
-  { name: 'Eddy', age: 30 },
-  { name: 'Michel', age: 40 },
-]
+  { name: "Jon", age: 19 },
+  { name: "Eddy", age: 30 },
+  { name: "Michel", age: 40 },
+];
 
 export const columns = [
   {
-    Header: 'Name',
-    accessor: 'name',
+    Header: "Name",
+    accessor: "name",
   },
   {
-    Header: 'Age',
-    accessor: 'age',
+    Header: "Age",
+    accessor: "age",
   },
-]
+];
 
 export const TableExample = () => {
   const tableInstance = useTable({
     data, // should be memoized
     columns, // should be memoized
-  })
-  return <Table instance={tableInstance} />
-}
+  });
+  return <Table instance={tableInstance} />;
+};
 ```
 
 export const data = [
-  { name: 'Jon', age: 19 },
-  { name: 'Eddy', age: 30 },
-  { name: 'Michel', age: 40 },
-]
+  { name: "Jon", age: 19 },
+  { name: "Eddy", age: 30 },
+  { name: "Michel", age: 40 },
+];
 
 export const columns = [
   {
-    Header: 'Name',
-    accessor: 'name',
+    Header: "Name",
+    accessor: "name",
   },
   {
-    Header: 'Age',
-    accessor: 'age',
+    Header: "Age",
+    accessor: "age",
   },
-]
+];
 
 export const TableExample = () => {
   const tableInstance = useTable({
     data,
     columns,
-  })
-  return <Table instance={tableInstance} />
-}
+  });
+  return <Table instance={tableInstance} />;
+};
 
 ### Example
 
