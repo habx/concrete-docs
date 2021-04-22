@@ -117,26 +117,6 @@ export const MenuExampleWithComplexTriggerElement = () => (
 
 <MenuExampleWithComplexTriggerElement />
 
-### Trigger ref
-
-If needed, you can also pass a trigger ref instead of a component.
-
-#### Example with Modal
-
-```jsx
-import { Modal, Button } from "@habx/ui-core";
-const ModalExample = () => {
-  const ref = React.useRef(null);
-  return (
-    <div>
-      <Modal triggerRef={ref} title="Hi !">
-        <Text>I'm a modal</Text>
-      </Modal>
-      <Button ref={ref}>Open the modal</Button>
-    </div>
-  );
-};
-```
 
 ## Access modal state
 
