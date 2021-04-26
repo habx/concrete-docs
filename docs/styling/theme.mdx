@@ -280,6 +280,18 @@ export const DivWithLowerShadow = styled.div`
 `;
 ```
 
+#### Parameters
+
+You can pass some parameters a second argument to customize the shadow behavior.
+
+| Parameter      | Description                                                                                                 | Default        | Required |
+|----------------|-------------------------------------------------------------------------------------------------------------|----------------|----------|
+| createHttpLink | Function to generate http link like [apollo-link-http](https://www.apollographql.com/docs/link/links/http/) |                | Yes      |
+| createWsLink   | Function to generate wsLink like [apollo-link-ws](https://www.apollographql.com/docs/link/links/ws/)        |                | No       |
+| wsSuffix       | Suffix added to endpoint for subscriptions queries                                                          | /subscriptions | No       |
+| httpSuffix     | Suffix added to endpoint for http queries                                                                   | /graphql       | No       |
+
+
 ## Font
 
 You can always import font-family from theme by doing
