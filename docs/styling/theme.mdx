@@ -280,7 +280,7 @@ export const DivWithLowerShadow = styled.div`
 `;
 ```
 
-#### Parameters
+### Parameters
 
 You can pass some parameters a second argument to customize the shadow behavior.
 
@@ -292,6 +292,16 @@ You can pass some parameters a second argument to customize the shadow behavior.
 | opacity           | overwrite opacity                                                           |
 | blur              | overwrite blur property                                                     |
 
+#### Example
+
+```jsx
+import styled from "styled-components";
+import { theme } from "@habx/ui-core";
+
+export const DivWithLowerShadow = styled.div`
+  box-shadow: ${theme.shadow("lower", { isImpactedByHover: false })};
+`;
+```
 
 ## Font
 
