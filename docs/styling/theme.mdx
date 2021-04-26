@@ -284,12 +284,13 @@ export const DivWithLowerShadow = styled.div`
 
 You can pass some parameters a second argument to customize the shadow behavior.
 
-| Parameter      | Description                                                                                                 | Default        | Required |
-|----------------|-------------------------------------------------------------------------------------------------------------|----------------|----------|
-| createHttpLink | Function to generate http link like [apollo-link-http](https://www.apollographql.com/docs/link/links/http/) |                | Yes      |
-| createWsLink   | Function to generate wsLink like [apollo-link-ws](https://www.apollographql.com/docs/link/links/ws/)        |                | No       |
-| wsSuffix       | Suffix added to endpoint for subscriptions queries                                                          | /subscriptions | No       |
-| httpSuffix     | Suffix added to endpoint for http queries                                                                   | /graphql       | No       |
+| Parameter         | Description                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| isImpactedByHover | If true, the hover version of this shadow will have an 10% opacity increase |
+| x                 | overwrite horizontal position                                               |
+| y                 | overwrite vertical position                                                 |
+| opacity           | overwrite opacity                                                           |
+| blur              | overwrite blur property                                                     |
 
 
 ## Font
