@@ -280,29 +280,6 @@ export const DivWithLowerShadow = styled.div`
 `;
 ```
 
-### Parameters
-
-You can pass some parameters a second argument to customize the shadow behavior.
-
-| Parameter         | Description                                                                 |
-|-------------------|-----------------------------------------------------------------------------|
-| isImpactedByHover | If true, the hover version of this shadow will have an 10% opacity increase |
-| x                 | overwrite horizontal position                                               |
-| y                 | overwrite vertical position                                                 |
-| opacity           | overwrite opacity                                                           |
-| blur              | overwrite blur property                                                     |
-
-#### Example
-
-```jsx
-import styled from "styled-components";
-import { theme } from "@habx/ui-core";
-
-export const DivWithLowerShadow = styled.div`
-  box-shadow: ${theme.shadow("lower", { isImpactedByHover: false })};
-`;
-```
-
 ## Font
 
 You can always import font-family from theme by doing
