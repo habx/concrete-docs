@@ -31,6 +31,7 @@
   },
   "author": "HABX Front End team",
   "dependencies": {
+    "@cmfcmf/docusaurus-search-local": "^0.6.1",
     "@docusaurus/core": "2.0.0-alpha.72",
     "@docusaurus/preset-classic": "2.0.0-alpha.72",
     "@habx/ui-core": "^5.23.4",

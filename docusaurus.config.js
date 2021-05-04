@@ -107,5 +107,6 @@ module.exports = {
         // ... other options
       },
     ],
+    require.resolve('@cmfcmf/docusaurus-search-local'),
   ],
 }
