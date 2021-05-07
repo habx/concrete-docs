@@ -8,7 +8,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Table',
-      items: ['table/usage'],
+      items: ['table/usage', 'table/imex'],
     },
     {
       type: 'category',

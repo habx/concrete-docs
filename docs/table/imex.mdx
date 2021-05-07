@@ -1,0 +1,203 @@
+---
+title: Import / Export
+---
+
+import { AlertPanel, Icon, Text } from '@habx/ui-core'
+
+## Overview
+
+_Concrete Table_ exports two hooks that use `react-table` column types to export and import data.
+For now, it supports `csv`, `xls` and `xlsx` files using [exceljs](https://github.com/exceljs/exceljs).
+
+## Columns
+
+_Concrete Table_ extends `react-table` column types with a new property `meta`. If you want to use the import/export feature,
+you will need to add the `imex` property in `meta` of the column you want to export and/or import.
+
+<AlertPanel warning icon={<Icon icon="exclam-outline" />}>
+  <Text markdown>
+    Columns without `meta.imex` will be ignored during export or import.
+  </Text>
+</AlertPanel>
+
+### Identifier (required)
+
+Columns definition for an import should always contain _one_ column with the property `identifier` set to true.
+It will allow finding existing value in your original data and update it instead of creating new values.
+
+##### Example
+
+```typescript
+;[
+  {
+    Header: 'ID',
+    accessor: 'id',
+    meta: {
+      imex: {
+        identifier: true,
+        type: 'string' as const,
+      },
+    },
+  },
+]
+```
+
+<AlertPanel icon={<Icon icon="information" />}>
+  <Text markdown>
+    Sometimes your data has a more complex way to defines uniqness. In this cas,
+    you can pass `findPrevValPredicate` to the hook to avoid data duplication
+  </Text>
+</AlertPanel>
+
+### Type (required)
+
+Parsing is done by our hooks so you need to specify what type of data you are expecting. Possible values are:
+
+- `string`
+- `string[]`
+- `number`
+- `number[]`
+
+If given data cannot be converted into _type_ specified in column it will be considered as an error.
+
+##### Example
+
+```typescript
+;[
+  {
+    Header: 'Name',
+    accessor: 'name',
+    meta: {
+      imex: {
+        type: 'string' as const,
+      },
+    },
+  },
+  {
+    Header: 'Age',
+    accessor: 'age',
+    meta: {
+      imex: {
+        type: 'number' as const,
+      },
+    },
+  },
+]
+```
+
+### Parse & Format
+
+Inspired by [final-form](https://final-form.org/), columns imex property accept `parse` and `format` properties that should be functions
+that returns either _parsed_ or _formated_ value.
+`parse` parses your raw data to give it to exported values when `format` formats data given from import to store it in your database.
+
+##### Example
+
+```typescript
+;[
+  {
+    Header: 'type de pièce',
+    accessor: 'category',
+    meta: {
+      imex: {
+        parse: (value: string | number) =>
+          roomOptions.find((option) => option.value === value)?.label ?? value,
+        format: (label: string | number) =>
+          roomOptions.find(
+            (option) =>
+              trim(lowerCase(option.label)) === trim(lowerCase(`${label}`))
+          )?.value ?? label,
+
+        type: 'string' as const,
+      },
+    },
+  },
+]
+```
+
+### Validation
+
+You can validate data given in you import with the `validate` property. If you return a _string_ or `false`, user won't
+be able to import this data.
+
+<AlertPanel icon={<Icon icon="information" />}>
+  <Text markdown>
+    Rows with error are ignored for import. They are just displayed to user as
+    warnings but won't be imported
+  </Text>
+</AlertPanel>
+
+##### Example
+
+```typescript
+;[
+  {
+    Header: 'type de pièce',
+    accessor: 'category',
+    meta: {
+      imex: {
+        validate: (value: string) =>
+          Object.values(RoomCategories).includes(value as RoomCategories),
+        type: 'string' as const,
+      },
+    },
+  },
+]
+```
+
+#### Excel data validation
+
+You can use `dataValidation` property to set excel specific validation defined [by exceljs](https://github.com/exceljs/exceljs#data-validations).
+It will be applied every existing rows plus 50 rows. This can be overwritten by passing the `extraRows` property manually to the `useExportTable` hook.
+
+##### Example
+
+```typescript
+;[
+  {
+    Header: 'type de pièce',
+    accessor: 'category',
+    meta: {
+      imex: {
+        dataValidation: {
+          type: 'list',
+          allowBlank: false,
+          formulae: [`"${roomOptions.map(({ label }) => label).join(',')}"`],
+        },
+        validate: (value: string) =>
+          Object.values(RoomCategories).includes(value as RoomCategories),
+        type: 'string' as const,
+      },
+    },
+  },
+]
+```
+
+### Excel Styling properties
+
+#### Width
+
+You can pass a width property to force excel to display your column with a specific width.
+
+#### Hidden
+
+Sometimes you will want to hide a column (like the one you use as identifier), to make your table easier to read.
+
+## Export
+
+WIP
+
+`useExportTable` hooks take `columns` as mandatory argument for hook calls. All other argument can be passed either in
+the hook call or in this function call.
+It returns an array with first property is a function that will trigger the download of the exported file with data passed as params.
+
+```typescript
+const [downloadTableData] = useExportTable({
+  data,
+  columns,
+})
+```
+
+## Import
+
+WIP
