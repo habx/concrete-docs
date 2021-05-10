@@ -1,3 +1,7 @@
+---
+title: Import / Export
+---
+
 import { AlertPanel, Button, Icon, Text } from '@habx/ui-core'
 import { useExportTable } from '@habx/ui-table'
 
@@ -41,8 +45,9 @@ It will allow finding existing value in your original data and update it instead
 
 <AlertPanel icon={<Icon icon="information" />}>
   <Text markdown>
-    Sometimes your data has a more complex way to defines uniqness. In this cas,
-    you can pass `findPrevValPredicate` to the hook to avoid data duplication
+    Sometimes your data has a more complex way to defines uniqness. In this
+    case, you can pass `findPrevValPredicate` to the hook to avoid data
+    duplication
   </Text>
 </AlertPanel>
 
@@ -182,8 +187,8 @@ Sometimes you will want to hide a column (like the one you use as identifier), t
 
 ## Export
 
-`useExportTable` hooks take `columns` as mandatory argument for hook calls. All other argument can be passed either in
-the hook call or in this function call.
+`useExportTable` hook takes `columns` as mandatory argument for its call. All other argument can be passed either in
+the hook call or in its function call.
 It returns an array with first property is a function that will trigger the download of the exported file with data passed as params.
 
 #### Example
@@ -274,4 +279,66 @@ export const ExportComponent = () => {
 
 ## Import
 
-WIP
+### Overview
+
+We tried to make import validation as clear as possible with a validation prompt that displays the table of modifications.
+
+![Import gif](https://res.cloudinary.com/habx/image/upload/v1616507243/tech/ui-table/imex.gif)
+
+#### Validation
+
+![Import validation](https://res.cloudinary.com/habx/image/upload/v1620664728/tech/ui-table/imex_compare.png)
+
+You can see 3 state of rows: _Insertions_, _modifications_ and _errors_.
+The total of theses rows are displayed next to the submit button.
+The number of impacted entity for a specific key is shown in the footer.
+
+### Rules
+
+- You can remove columns in your sheet file as long as they are not required or tagged as identifier
+- If you pass an empty string, the hooks consider that you did not pass any value at all
+- Any error in a cell of a row will prevent the import of the entire row even if other values are valid
+- If the comparison result shows that the is no difference between current data and imported rows, they are ignored.
+
+### Usage
+
+```typescript jsx
+export const MyTableWithImport = () => {
+  const tableInstance = useTable({
+    data,
+    columns,
+  })
+  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000))
+
+  const importTable = useImportTable({
+    columns,
+    upsertRow: upsertRow,
+    getOriginalData: () => data,
+    confirmLightBoxTitle: 'Import',
+  })
+}
+```
+
+#### With Drag & Drop
+
+```typescript jsx
+export const MyTableWithImport = () => {
+  const tableInstance = useTable({
+    data,
+    columns,
+  })
+  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000))
+  const dropzoneProps = {
+    columns: IMEX_COLUMNS,
+    upsertRow: upsertRow,
+    getOriginalData: () => FAKE_DATA,
+    confirmLightBoxTitle: 'Import',
+  }
+
+  return (
+    <ImportTableDropzone {...dropzoneProps}>
+      <Table instance={tableInstance} />
+    </ImportTableDropzone>
+  )
+}
+```
