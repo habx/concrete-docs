@@ -2,9 +2,20 @@
 title: Async prompts
 ---
 
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { confirm, notify, Button, Icon, Title, Text } from "@habx/ui-core";
+import {
+  confirm,
+  notify,
+  alert,
+  Button,
+  Icon,
+  Title,
+  Text,
+  Provider,
+  AlertPanel,
+  Card,
+} from '@habx/ui-core'
 
 ## Why async prompts ?
 
@@ -21,29 +32,29 @@ asynchronously.
 ### Usage
 
 ```jsx
-import { confirm, notify, Button } from "@habx/ui-core";
+import { confirm, notify, Button } from '@habx/ui-core'
 
 const MyComponent = () => {
   const handleSubmit = async () => {
-    const hasConfirmed = confirm("Do you want to confirm ?");
-    notify(`User response ${hasConfirmed ? "yes" : "no"}`);
-  };
+    const hasConfirmed = confirm('Do you want to confirm ?')
+    notify(`User response ${hasConfirmed ? 'yes' : 'no'}`)
+  }
 
-  return <Button onClick={handleSubmit}>Click Me!</Button>;
-};
+  return <Button onClick={handleSubmit}>Click Me!</Button>
+}
 ```
 
 export const BasicConfirmUsage = () => {
   const handleSubmit = async () => {
     const hasConfirmed = await confirm({
-      message: "Do you want to confirm ?",
-      confirmLabel: "Yes",
-      cancelLabel: "No",
-    });
-    notify(`User response is ${hasConfirmed ? "yes" : "no"}`);
-  };
-  return <Button onClick={handleSubmit}>Click Me!</Button>;
-};
+      message: 'Do you want to confirm ?',
+      confirmLabel: 'Yes',
+      cancelLabel: 'No',
+    })
+    notify(`User response is ${hasConfirmed ? 'yes' : 'no'}`)
+  }
+  return <Button onClick={handleSubmit}>Click Me!</Button>
+}
 
 <BasicConfirmUsage />
 
@@ -56,13 +67,13 @@ as long as the code is behind the `Provider`.
 
 ```jsx
 const MyComponent = () => (
-  <Button onClick={() => notify("I can be called from anwhere !")}>
+  <Button onClick={() => notify('I can be called from anwhere !')}>
     Click Me!
   </Button>
-);
+)
 ```
 
-<Button onClick={() => notify("I can be called from anwhere !")}>
+<Button onClick={() => notify('I can be called from anwhere !')}>
   Click Me!
 </Button>
 
@@ -73,19 +84,19 @@ const MyComponent = () => (
   <Button
     onClick={() =>
       notify({
-        message: "hi",
+        message: 'hi',
         illustration: <Icon icon="3D-building-outline" />,
       })
     }
   >
     Click Me!
   </Button>
-);
+)
 ```
 
 <Button
   onClick={() =>
-    notify({ message: "hi", illustration: <Icon icon="3D-building-outline" /> })
+    notify({ message: 'hi', illustration: <Icon icon="3D-building-outline" /> })
   }
 >
   Click Me!
@@ -100,9 +111,9 @@ const MyComponent = () => {
       <Title type="regular">Title</Title>
       <Text>Text</Text>
     </div>
-  );
-  return <Button onClick={() => notify({ message })}>Click Me!</Button>;
-};
+  )
+  return <Button onClick={() => notify({ message })}>Click Me!</Button>
+}
 ```
 
 <Button
@@ -126,13 +137,13 @@ You can pass directly markdown to `notify` if you need more complex rendering wi
 
 ```jsx
 const MyComponent = () => (
-  <Button onClick={() => notify({ message: "**hi in bold**", markdown: true })}>
+  <Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>
     Click Me!
   </Button>
-);
+)
 ```
 
-<Button onClick={() => notify({ message: "**hi in bold**", markdown: true })}>
+<Button onClick={() => notify({ message: '**hi in bold**', markdown: true })}>
   Click Me!
 </Button>
 
@@ -146,11 +157,11 @@ You can pass a 2nd argument to notify to configure the notification as you like
 ```jsx
 const MyComponent = () => (
   <Button
-    onClick={() => notify("ERROR !", { duration: 10_000, type: "error" })}
+    onClick={() => notify('ERROR !', { duration: 10_000, type: 'error' })}
   >
     Click Me!
   </Button>
-);
+)
 ```
 
 #### Types
@@ -159,19 +170,46 @@ export const TypeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
-`;
+`
 
 <TypeContainer>
-  <Button small onClick={() => notify("info", { type: "info" })}>
+  <Button small onClick={() => notify('info', { type: 'info' })}>
     info
   </Button>
-  <Button small warning onClick={() => notify("warning", { type: "warning" })}>
+  <Button small warning onClick={() => notify('warning', { type: 'warning' })}>
     warning
   </Button>
-  <Button small error onClick={() => notify("error", { type: "error" })}>
+  <Button small error onClick={() => notify('error', { type: 'error' })}>
     error
   </Button>
 </TypeContainer>
+
+## Alert
+
+`alert` allows to add an `AlertBanner` at the very top of your application, where you placed your `Provider`.
+
+### Example
+
+```typescript jsx
+const MyComponent = () => {
+  return <Button onClick={() => alert("I'm an alert !"}>Click Me!</Button>;
+};
+
+```
+
+<AlertPanel>
+  In this example, the provider is scoped to the next Card
+</AlertPanel>
+
+<br />
+
+<Card spacing="regular" outline>
+  <Provider>
+    <Button small onClick={() => alert("I'm an alert !")}>
+      Show me an alert
+    </Button>
+  </Provider>
+</Card>
 
 ## Prompt
 
@@ -186,11 +224,11 @@ Other `Modal` or `LightBox` props can be passed as params.
 ### Example
 
 ```jsx
-import { prompt } from "@habx/ui-core";
+import { prompt } from '@habx/ui-core'
 
 const formResult = await prompt(({ onResolve }) => ({
   Component: () => <form onSubmit={onResolve}>// you form</form>,
-}));
+}))
 if (formResult) {
   // use your form result
 }
