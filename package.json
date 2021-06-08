@@ -37,7 +37,7 @@
     "@habx/ui-table": "^6.7.3",
     "@mdx-js/react": "^1.6.21",
     "clsx": "^1.1.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "react": "^17.0.1",
