@@ -54,7 +54,7 @@ jobs:
           npm run deploy
 
   # Just to make it compatible with the rest of the repos's CI
-  deploy-to-dev:
+  build:
     needs: checks
     runs-on: ubuntu-20.04
     steps:
