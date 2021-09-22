@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.0.0-beta.6",
-    "@habx/config-ci-front": "^0.17.0",
+    "@habx/config-ci-front": "^0.18.0",
     "@habx/eslint-config-client": "^6.3.0",
     "@tsconfig/docusaurus": "^1.0.4",
     "@types/lodash": "^4.14.173",
