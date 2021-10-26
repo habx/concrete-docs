@@ -202,6 +202,24 @@ const App = () => (
 );
 ```
 
+#### Use Root Theme
+
+Allows to bypass neareast background behavior and takes root background (theme background) to calculate color scales
+
+```jsx
+const MyComponent = styled.div`
+  background: ${theme.color('background', { useRootTheme: true})};
+`;
+
+
+
+const App = () => (
+  <Background backgroundColor="red"}>
+    <MyComponent /> // => Background won't be red but will takes theme default background value
+  </Background>
+);
+```
+
 #### Custom props variation
 
 The name of the prop we want to use to override manually the color of the text.
