@@ -45,7 +45,7 @@ export const SpanWithPrimaryColor = styled.span`
 
 ### Colors variations
 
-Main colors comes with 6 variations useful when you want contrast in your components.
+Main colors come with 6 variations useful when you want contrast in your components.
 
 - `calmer`
 - `calm`
@@ -124,7 +124,7 @@ import styled from "styled-components";
 import { theme } from "@habx/ui-core";
 
 export const SpanWithNeutralColor = styled.span`
-  color: ${theme.neutralColor("800")};
+  color: ${theme.neutralColor(800)};
 `;
 ```
 
@@ -204,7 +204,7 @@ const App = () => (
 
 #### Use Root Theme
 
-Allows to bypass neareast background behavior and takes root background (theme background) to calculate color scales
+Allows to bypass nearest background behavior and takes root background (theme background) to calculate color scales
 
 ```jsx
 const MyComponent = styled.div`
