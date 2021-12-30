@@ -2,8 +2,7 @@
 title: Import / Export
 ---
 
-import { AlertPanel, Button, Icon, Text } from '@habx/ui-core'
-import { useExportTable } from '@habx/ui-table'
+import { AlertPanel, Icon, Text } from "@habx/ui-core";
 
 ## Overview
 
@@ -29,18 +28,15 @@ It will allow finding existing value in your original data and update it instead
 ##### Example
 
 ```typescript
-;[
+[
   {
-    Header: 'ID',
-    accessor: 'id',
-    meta: {
-      imex: {
-        identifier: true,
-        type: 'string' as const,
-      },
+    Header: "ID",
+    accessor: "id",
+    imex: {
+      identifier: true,
     },
   },
-]
+];
 ```
 
 <AlertPanel icon={<Icon icon="information" />}>
@@ -55,43 +51,76 @@ It will allow finding existing value in your original data and update it instead
 
 Parsing is done by our hooks so you need to specify what type of data you are expecting. Possible values are:
 
-- `string`
-- `string[]`
-- `number`
-- `number[]`
+- `IMEXColumnType.string`
+- `IMEXColumnType['string[]']'`
+- `IMEXColumnType.number`
+- `IMEXColumnType['number[]']`
 
 If given data cannot be converted into _type_ specified in column it will be considered as an error.
 
 ##### Example
 
 ```typescript
-;[
+[
   {
-    Header: 'Name',
-    accessor: 'name',
-    meta: {
-      imex: {
-        type: 'string' as const,
-      },
+    Header: "Name",
+    accessor: "name",
+    imex: {
+      type: IMEXColumnType.string,
     },
   },
   {
-    Header: 'Age',
-    accessor: 'age',
-    meta: {
-      imex: {
-        type: 'number' as const,
-      },
+    Header: "Age",
+    accessor: "age",
+    imex: {
+      type: IMEXColumnType.number,
     },
   },
-]
+];
+```
+
+### Header (optional)
+
+Used as header in the exported file. If not specified, column Header will be used but is has to be a string.
+
+##### Example
+
+```typescript
+[
+  {
+    Header: () => <CustomHeader />,
+    accessor: "name",
+    imex: {
+      header: "Name",
+    },
+  },
+];
+```
+
+### Path (optional)
+
+Used as param to get & set lodash functions to retrieve or set data.
+If not specified, column accessor will be used but it would need to be a string.
+
+##### Example
+
+```typescript
+[
+  {
+    Header: "Name",
+    accessor: (row) => row.user.name,
+    imex: {
+      path: "user.name",
+    },
+  },
+];
 ```
 
 ### Parse & Format
 
 Inspired by [final-form](https://final-form.org/), columns imex property accept `parse` and `format` properties that should be functions
 that returns either _parsed_ or _formated_ value.
-`parse` parses your raw data to give it to exported values when `format` formats data given from import to store it in your database.
+`format` formats your raw data to give it to exported values when `parse` transforms data given from import to store it in your database.
 
 ##### Example
 
@@ -100,17 +129,14 @@ that returns either _parsed_ or _formated_ value.
   {
     Header: 'type de pièce',
     accessor: 'category',
-    meta: {
-      imex: {
-        parse: (value: string | number) =>
-          roomOptions.find((option) => option.value === value)?.label ?? value,
-        format: (label: string | number) =>
-          roomOptions.find(
+    imex: {
+      format: (value: string | number) =>
+        roomOptions.find((option) => option.value === value)?.label ?? value,
+      parse: (label: string | number) =>
+        roomOptions.find(
             (option) =>
               trim(lowerCase(option.label)) === trim(lowerCase(`${label}`))
-          )?.value ?? label,
-
-        type: 'string' as const,
+        )?.value ?? label,
       },
     },
   },
@@ -132,19 +158,16 @@ be able to import this data.
 ##### Example
 
 ```typescript
-;[
+[
   {
-    Header: 'type de pièce',
-    accessor: 'category',
-    meta: {
-      imex: {
-        validate: (value: string) =>
-          Object.values(RoomCategories).includes(value as RoomCategories),
-        type: 'string' as const,
-      },
+    Header: "type de pièce",
+    accessor: "category",
+    imex: {
+      validate: (value: string) =>
+        Object.values(RoomCategories).includes(value as RoomCategories),
     },
   },
-]
+];
 ```
 
 #### Excel data validation
@@ -155,24 +178,21 @@ It will be applied every existing rows plus 50 rows. This can be overwritten by 
 ##### Example
 
 ```typescript
-;[
+[
   {
-    Header: 'type de pièce',
-    accessor: 'category',
-    meta: {
-      imex: {
-        dataValidation: {
-          type: 'list',
-          allowBlank: false,
-          formulae: [`"${roomOptions.map(({ label }) => label).join(',')}"`],
-        },
-        validate: (value: string) =>
-          Object.values(RoomCategories).includes(value as RoomCategories),
-        type: 'string' as const,
+    Header: "type de pièce",
+    accessor: "category",
+    imex: {
+      dataValidation: {
+        type: "list",
+        allowBlank: false,
+        formulae: [`"${roomOptions.map(({ label }) => label).join(",")}"`],
       },
+      validate: (value: string) =>
+        Object.values(RoomCategories).includes(value as RoomCategories),
     },
   },
-]
+];
 ```
 
 ### Excel Styling properties
@@ -197,9 +217,9 @@ It returns an array with first property is a function that will trigger the down
 
 ```typescript
 const data = [
-  { name: 'Alexis', age: 26 },
-  { name: 'Benjamin', age: 10 },
-]
+  { name: "Alexis", age: 26 },
+  { name: "Benjamin", age: 10 },
+];
 ```
 
 ##### Columns
@@ -207,75 +227,34 @@ const data = [
 ```typescript
 const columns = [
   {
-    Header: 'Name',
-    accessor: 'name',
-    meta: {
-      imex: {
-        type: 'string' as const,
-      },
+    Header: "Name",
+    accessor: "name",
+    imex: {
+      type: IMEXColumnType.string,
     },
   },
   {
-    Header: 'Age',
-    accessor: 'age',
-    meta: {
-      imex: {
-        type: 'number' as const,
-      },
+    Header: "Age",
+    accessor: "age",
+    imex: {
+      type: IMEXColumnType.number,
     },
   },
-]
+];
 ```
 
 ##### Basic Usage
 
 ```typescript
-const [downloadTableData] = useExportTable({
-  data,
-  columns,
-})
+const [downloadTableData] = useExportTable();
 
 //
 
-downloadTableData('export')
+downloadTableData("export", {
+  data,
+  columns,
+});
 ```
-
-export const ExportComponent = () => {
-  const columns = [
-    {
-      Header: 'Name',
-      accessor: 'name',
-      meta: {
-        imex: {
-          type: 'string',
-        },
-      },
-    },
-    {
-      Header: 'Age',
-      accessor: 'age',
-      meta: {
-        imex: {
-          type: 'number',
-        },
-      },
-    },
-  ]
-  const data = [
-    { name: 'Alexis', age: 26 },
-    { name: 'Benjamin', age: 10 },
-  ]
-  const [downloadTableData] = useExportTable({
-    data,
-    columns,
-    type: 'xls',
-  })
-  return (
-    <Button onClick={() => downloadTableData('export')}>Download XLS</Button>
-  )
-}
-
-<ExportComponent />
 
 ## Import
 
@@ -307,16 +286,16 @@ export const MyTableWithImport = () => {
   const tableInstance = useTable({
     data,
     columns,
-  })
-  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000))
+  });
+  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
   const importTable = useImportTable({
     columns,
     upsertRow: upsertRow,
     getOriginalData: () => data,
-    confirmLightBoxTitle: 'Import',
-  })
-}
+    confirmLightBoxTitle: "Import",
+  });
+};
 ```
 
 #### With Drag & Drop
@@ -326,19 +305,19 @@ export const MyTableWithImport = () => {
   const tableInstance = useTable({
     data,
     columns,
-  })
-  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000))
+  });
+  const upsertRow = () => new Promise((resolve) => setTimeout(resolve, 1000));
   const dropzoneProps = {
     columns: IMEX_COLUMNS,
     upsertRow: upsertRow,
     getOriginalData: () => FAKE_DATA,
-    confirmLightBoxTitle: 'Import',
-  }
+    confirmLightBoxTitle: "Import",
+  };
 
   return (
     <ImportTableDropzone {...dropzoneProps}>
       <Table instance={tableInstance} />
     </ImportTableDropzone>
-  )
-}
+  );
+};
 ```
