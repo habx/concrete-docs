@@ -11,6 +11,10 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'habx',
   projectName: 'concrete-docs',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
   themeConfig: {
     navbar: {
       logo: {
