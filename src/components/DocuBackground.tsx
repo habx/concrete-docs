@@ -1,4 +1,4 @@
-import useThemeContext from '@theme/hooks/useThemeContext'
+import { useColorMode } from '@docusaurus/theme-common'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -9,7 +9,7 @@ const TransparentBackground = styled(Background)`
 `
 
 export const DocuBackground: React.FunctionComponent = ({ children }) => {
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
 
   return (
     <TransparentBackground
