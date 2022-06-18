@@ -51,7 +51,7 @@
     "@docusaurus/module-type-aliases": "^2.0.0-beta.15",
     "@habx/config-ci-front": "^2.5.0",
     "@habx/eslint-config-client": "^6.9.0",
-    "@tsconfig/docusaurus": "^1.0.5",
+    "@tsconfig/docusaurus": "^1.0.6",
     "@types/lodash": "^4.14.180",
     "@types/react": "^18.0.12",
     "@types/react-helmet": "^6.1.5",
