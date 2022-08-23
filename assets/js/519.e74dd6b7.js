@@ -2407,7 +2407,7 @@ var _rules = [
   [ 'smartquotes',    __webpack_require__(58450)    ],
   // `text_join` finds `text_special` tokens (for escape sequences)
   // and joins them with the rest of the text
-  [ 'text_join',      __webpack_require__(46132)      ]
+  [ 'text_join',      __webpack_require__(46633)      ]
 ];
 
 
@@ -5972,7 +5972,7 @@ module.exports = StateCore;
 
 /***/ }),
 
-/***/ 46132:
+/***/ 46633:
 /***/ ((module) => {
 
 "use strict";
