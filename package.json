@@ -52,7 +52,7 @@
     "@habx/config-ci-front": "^3.5.0",
     "@habx/eslint-config-client": "^6.9.2",
     "@tsconfig/docusaurus": "^1.0.6",
-    "@types/lodash": "^4.14.184",
+    "@types/lodash": "^4.14.185",
     "@types/react": "^18.0.18",
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-dom": "^5.3.3",
