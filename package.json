@@ -34,7 +34,7 @@
     "@docusaurus/core": "^2.2.0",
     "@docusaurus/preset-classic": "^2.2.0",
     "@docusaurus/theme-common": "^2.2.0",
-    "@habx/ui-core": "^6.17.0",
+    "@habx/ui-core": "^6.18.0",
     "@habx/ui-table": "^8.3.0",
     "clsx": "^1.2.1",
     "docusaurus": "^1.14.7",
