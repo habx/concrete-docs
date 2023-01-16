@@ -42,10 +42,9 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'guidelines/',
-          activeBasePath: 'guidelines',
-          label: 'Guidelines',
-          position: 'left',
+          label: 'Figma',
+          href: 'https://www.figma.com/file/F9Fq7JNSGYbcLBJaBDjo77/Concrete---Design-System?node-id=0%3A1&t=H0uaZdSQe72e2LFn-0',
+          position: 'right',
         },
         {
           label: 'Dribble',
@@ -78,6 +77,11 @@ module.exports = {
               href: 'https://github.com/habx/ui-core',
             },
             {
+              label: 'Figma',
+              href: 'https://www.figma.com/file/F9Fq7JNSGYbcLBJaBDjo77/Concrete---Design-System?node-id=0%3A1&t=H0uaZdSQe72e2LFn-0',
+              position: 'right',
+            },
+            {
               label: 'Dribble',
               href: 'https://dribbble.com/habx',
             },
@@ -97,19 +101,5 @@ module.exports = {
         },
       },
     ],
-  ],
-  plugins: [
-    path.resolve(__dirname, './plugins/figma'),
-    path.resolve(__dirname, './plugins/cloudinary'),
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'guidelines',
-        path: 'guidelines',
-        routeBasePath: 'guidelines',
-        sidebarPath: require.resolve('./sidebarsGuidelines.js'),
-        // ... other options
-      },
-    ],
-  ],
+  ]
 }

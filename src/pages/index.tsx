@@ -5,7 +5,7 @@ import Layout from '@theme/Layout'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { Background, breakpoints, Button, Title } from '@habx/ui-core'
+import { Background, breakpoints, Button, Text } from '@habx/ui-core'
 
 import { DocuBackground } from '../components/DocuBackground'
 
@@ -17,9 +17,7 @@ export const HomeImg = styled.img`
   object-fit: cover;
 `
 
-export const HomeMainContainer = styled(Background).attrs(() => ({
-  backgroundColor: 'black',
-}))`
+export const HomeMainContainer = styled(Background)`
   background: transparent !important;
   height: 600px;
 `
@@ -36,7 +34,7 @@ export const HomeHeadlineContainer = styled.div`
 
 export const Features = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
   grid-gap: 64px;
   max-width: 1200px;
@@ -47,10 +45,6 @@ export const Features = styled.div`
 `
 
 export const FeatureContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   img {
     width: 100%;
     margin-bottom: 32px;
@@ -60,34 +54,41 @@ export const FeatureContainer = styled.div`
 type FeatureProps = {
   label: string
   illustration: string
+  reversed?: boolean
 }
 
 const features: FeatureProps[] = [
   {
-    label: 'All the components you need',
-    illustration: 'crank.svg',
+    label: 'Structured guidelines with colors, typography, shadows, and more',
+    illustration: 'colors.png',
   },
   {
-    label: 'Shape as you want️',
-    illustration: 'shapes-merging.svg',
+    label: 'A complete set of component to build your app',
+    illustration: 'components.png',
   },
   {
-    label: 'Made with React️',
-    illustration: 'heart.svg',
+    label: 'A full set of icons internally designed',
+    illustration: 'icons.png',
   },
 ]
 
 export const Feature: React.FunctionComponent<FeatureProps> = ({
   label,
   illustration,
+  reversed,
 }) => {
   const imgUrl = useBaseUrl(`img/illustrations/${illustration}`)
-  return (
-    <FeatureContainer>
-      <img src={imgUrl} alt="" />
-      <Title type="section">{label}</Title>
-    </FeatureContainer>
-  )
+  const components = React.useMemo(() => {
+    const orderedComponent = [
+      <img src={imgUrl} alt="" />,
+      <Text type="veryLarge">{label}</Text>,
+    ]
+    if (reversed) {
+      return orderedComponent.reverse()
+    }
+    return orderedComponent
+  }, [imgUrl, label, reversed])
+  return <React.Fragment>{components}</React.Fragment>
 }
 
 export const LogoContainer = styled.div`
@@ -99,6 +100,12 @@ export const LogoContainer = styled.div`
       margin-left: -12px;
     }
   }
+`
+
+const Container = styled.div`
+  max-width: 800px;
+  padding: 32px;
+  margin: 0 auto;
 `
 
 export default () => {
@@ -113,7 +120,11 @@ export default () => {
       title={`${siteConfig.title} documentation`}
       description="Design System By habx>"
     >
-      <HomeMainContainer>
+      <HomeMainContainer
+        backgroundColor={(theme) =>
+          theme.neutralColor.withIntensityFading['100']
+        }
+      >
         <HomeImg src={imgUrl} alt="cover" />
         <HomeHeadlineContainer>
           <LogoContainer>
@@ -126,9 +137,25 @@ export default () => {
         </HomeHeadlineContainer>
       </HomeMainContainer>
       <DocuBackground>
+        <Background
+          backgroundColor={(theme) =>
+            theme.neutralColor.withIntensityFading['100']
+          }
+        >
+          <Container>
+            <Text type="large">
+              Concrete design system is a design system used and developed by{' '}
+              <strong>hab</strong>x.
+              <br />
+              It is built with a useful set of styles and versatile components.
+              Based on a solid basis and efficient design. It is adaptable and
+              usable by most.
+            </Text>
+          </Container>
+        </Background>
         <Features>
           {features.map((feature, index) => (
-            <Feature key={index} {...feature} />
+            <Feature key={index} reversed={index % 2 === 0} {...feature} />
           ))}
         </Features>
       </DocuBackground>
