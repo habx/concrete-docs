@@ -101,5 +101,8 @@ module.exports = {
         },
       },
     ],
-  ]
+  ],
+  plugins: [
+    path.resolve(__dirname, './plugins/cloudinary'),
+  ],
 }
