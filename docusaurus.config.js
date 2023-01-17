@@ -4,8 +4,8 @@ const path = require('path')
 module.exports = {
   title: 'Concrete',
   tagline: 'Concrete design-system documentation',
-  url: 'https://concrete.habx.com',
-  baseUrl: '/',
+  url: 'https://habx.github.io/',
+  baseUrl: 'concrete-docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
